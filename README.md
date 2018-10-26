@@ -4,4 +4,4 @@ Develop an Online store that allows to the customer, besides the usual shopping 
 
 [Overleaf report](https://www.overleaf.com/1178713826shbrbdbvczrs)
 
-VM: \\kings\vmsis
+VM: \\\kings\vmsis
