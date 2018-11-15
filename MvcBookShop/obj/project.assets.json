@@ -11800,11 +11800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nadiacarvalho/Documents/Github/SINF/Website/Website.csproj",
-      "projectName": "Website",
-      "projectPath": "/Users/nadiacarvalho/Documents/Github/SINF/Website/Website.csproj",
+      "projectUniqueName": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/MvcBookShop.csproj",
+      "projectName": "MvcBookShop",
+      "projectPath": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/MvcBookShop.csproj",
       "packagesPath": "/Users/nadiacarvalho/.nuget/packages/",
-      "outputPath": "/Users/nadiacarvalho/Documents/Github/SINF/Website/obj/",
+      "outputPath": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

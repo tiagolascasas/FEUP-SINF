@@ -1,6 +1,6 @@
 using System;
 
-namespace Website.Models
+namespace MvcBookShop.Models
 {
     public class ErrorViewModel
     {
