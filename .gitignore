@@ -1,4 +1,4 @@
 .DS_Store
-obj/
-bin/
-.vscode
+MvcBookShop/obj/
+MvcBookShop/bin/
+MvcBookShop/.vscode
