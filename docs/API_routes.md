@@ -175,7 +175,7 @@ This API deals with the functionalities related to the purchasing process, allow
 <tr>
   <td>302</td>
   <td>DELETE</td>
-  <td>/user/{user_id>/cart/{book_id}</td>
+  <td>/user/{user_id}/cart/{book_id}</td>
   <td>Removes a book from the user's cart</td>
   <td>n/a</td>
   <td>Code 200 if OK, 500 otherwise</td>
