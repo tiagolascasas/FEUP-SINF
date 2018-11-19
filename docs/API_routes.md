@@ -4,6 +4,7 @@ The API between Primavera and our Web app will be a REST API whose content will 
 
 template:
 
+<table>
 <tr>
   <th>ID</th>
   <th>Method</th>
@@ -19,11 +20,9 @@ template:
   <td></td>
   <td></td>
   <td>
-    <pre>
-    
-    </pre>
   </td>
 </tr>
+</table>
 
 ## 1. API for user-related functionalities
 
@@ -68,20 +67,25 @@ template:
   </td>
 </tr>
 <tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td>202</td>
+  <td>GET</td>
+  <td>/categories/{category}</td>
+  <td>Gets all books from a given category</td>
+  <td>n/a</td>
   <td>
-    <pre>
-    
-    </pre>
+
   </td>
 </tr>
+<tr>
+  <td>203</td>
+  <td>POST</td>
+  <td>/search</td>
+  <td>Get all books that match the specified parameters</td>
+  <td>isbn, title, publisher</td>
+  <td>
 
-202|GET|/categories/{category}|Gets all books from a given category|n/a|
-203|POST|/search|Get all books that match the specified parameters|n/a|
+  </td>
+</tr>
 </table>
 
 ## 3. API for purchases
