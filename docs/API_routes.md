@@ -158,7 +158,7 @@ The API between Primavera and our Web app will be a REST API whose content will 
   <th>Body</th>
   <th>Return</th>
 </tr>
-<tr>301|PUT||| n/a|
+<tr>
   <td>301</td>
   <td>PUT</td>
   <td>/user/{user_id}/cart/{book_id}</td>
