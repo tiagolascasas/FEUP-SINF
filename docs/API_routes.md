@@ -2,6 +2,29 @@
 
 The API between Primavera and our Web app will be a REST API whose content will be JSON strings.
 
+template:
+
+<tr>
+  <th>ID</th>
+  <th>Method</th>
+  <th>Route</th>
+  <th>Description</th>
+  <th>Body</th>
+  <th>Returned JSON</th>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>
+    <pre>
+    
+    </pre>
+  </td>
+</tr>
+
 ## 1. API for user-related functionalities
 
 |ID|Method|Route|Description|Parameters|Returned JSON|
@@ -12,9 +35,23 @@ The API between Primavera and our Web app will be a REST API whose content will 
 
 ## 2. API for books
 
-|ID|Method|Route|Description|Body|Returned JSON|
-|---|---|---|---|---|
-201|GET|/book/{id}|Gets all info about a book|n/a|<pre>
+<table>
+<tr>
+  <th>ID</th>
+  <th>Method</th>
+  <th>Route</th>
+  <th>Description</th>
+  <th>Body</th>
+  <th>Returned JSON</th>
+</tr>
+<tr>
+  <td>201</td>
+  <td>GET</td>
+  <td>/book/{id}</td>
+  <td>Gets all info about a book</td>
+  <td>n/a</td>
+  <td>
+    <pre>
 {
   title:string,
   publisher:string,
@@ -26,9 +63,26 @@ The API between Primavera and our Web app will be a REST API whose content will 
   lang:string,
   dimensions:string,
   cover_type:string
-}</pre>|
+}
+    </pre>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>
+    <pre>
+    
+    </pre>
+  </td>
+</tr>
+
 202|GET|/categories/{category}|Gets all books from a given category|n/a|
 203|POST|/search|Get all books that match the specified parameters|n/a|
+</table>
 
 ## 3. API for purchases
 
