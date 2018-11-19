@@ -26,11 +26,53 @@ template:
 
 ## 1. API for user-related functionalities
 
-|ID|Method|Route|Description|Parameters|Returned JSON|
-|---|---|---|---|---|
-101|POST|/user/create|Register a new user|username, password|n/a|
-102|GET|/user/{id}|Get the profile of an user|name, birthdate, address, postal_code, nif, phone, email, username, password|n/a|
-103|POST|/user/{id}/edit|Edit the password of an user|password|n/a|
+<table>
+<tr>
+  <th>ID</th>
+  <th>Method</th>
+  <th>Route</th>
+  <th>Description</th>
+  <th>Body</th>
+  <th>Return</th>
+</tr>
+<tr>
+  <td>101</td>
+  <td>PUT</td>
+  <td>/user/create</td>
+  <td>Register a new user</td>
+  <td>name, birthdate, address, postal_code, nif, phone, email, username, password</td>
+  <td>Code 200 if OK, 500 otherwise</td>
+</tr>
+<tr>
+  <td>102</td>
+  <td>GET</td>
+  <td>/user/{id></td>
+  <td>Get the profile of an user</td>
+  <td>n/a</td>
+  <td>
+    <pre>
+    {
+      name:string,
+      birthdate:sting,
+      address:string,
+      postal_code:string,
+      nif:int,
+      phone:int,
+      email:string,
+      username:string
+    }
+    </pre>
+  </td>
+</tr>
+<tr>
+  <td>103</td>
+  <td>POST</td>
+  <td>/user/{id}/edit</td>
+  <td>Edit the password of an user</td>
+  <td>password</td>
+  <td>Code 200 if OK, 500 otherwise</td>
+</tr>
+</table>
 
 ## 2. API for books
 
