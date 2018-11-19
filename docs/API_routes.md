@@ -1,21 +1,29 @@
 # Primavera API for the Online BookShop Web App
 
-The API between Primavera and our Web app will be a REST API whose content will be serialized C# objects, given that both Primavera and our Web app, written in ASP.NET, use this language.
+The API between Primavera and our Web app will be a REST API whose content will be JSON strings.
 
 ## 1. API for user-related functionalities
 
-|ID|Method|Route|Description|Body|
+|ID|Method|Route|Description|Parameters|Returned JSON|
 |---|---|---|---|---|
-101|POST|/register|Register a new user|n/a|
-102|POST|/login|Login an user|n/a|
-103|GET|/user/{id}|Get the profile of an user|n/a|
-104|POST|/user/{id}/edit|Edit the profile of an user|n/a|
+101|POST|/user/create|Register a new user|username, password|n/a|
+102|GET|/user/{id}|Get the profile of an user|name, birthdate, address, postal_code, nif, phone, email, username, password|n/a|
+103|POST|/user/{id}/edit|Edit the password of an user|password|n/a|
 
 ## 2. API for books
 
-|ID|Method|Route|Description|Body|
+|ID|Method|Route|Description|Body|Returned JSON|
 |---|---|---|---|---|
-201|GET|/book/{id}|Gets all info about a book|n/a|
+201|GET|/book/{id}|Gets all info about a book|n/a|'''{title:"title",
+publisher:string,
+synopsis:string,
+image:string,
+isbn:int,
+pages:int,
+year:string,
+lang:string,
+dimensions:string,
+cover_type:string'''}|
 202|GET|/categories/{category}|Gets all books from a given category|n/a|
 203|POST|/search|Get all books that match the specified parameters|n/a|
 
