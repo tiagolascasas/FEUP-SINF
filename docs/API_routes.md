@@ -1,6 +1,6 @@
 # Primavera API for the Online BookShop Web App
 
-The API between Primavera and our Web app will be a REST API whose content will be JSON strings.
+The API between Primavera and our Web app will be a REST API whose return values will be either HTTP codes or JSON strings.
 
 <!--template
 <table>
@@ -234,9 +234,6 @@ The API between Primavera and our Web app will be a REST API whose content will 
         {book_id:int, cover:string},
         ...
       ]
-    },
-    {
-      ...
     },
     ...
   ]
