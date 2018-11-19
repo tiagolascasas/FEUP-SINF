@@ -210,6 +210,8 @@ This API deals with the functionalities related to the purchasing process, allow
 
 ## 4. API for past sales information
 
+This API allows for the listing of all orders made by an user and their current status.
+
 <table>
 <tr>
   <th>ID</th>
