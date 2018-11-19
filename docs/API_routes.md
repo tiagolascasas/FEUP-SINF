@@ -2,8 +2,7 @@
 
 The API between Primavera and our Web app will be a REST API whose content will be JSON strings.
 
-template:
-
+<!--template
 <table>
 <tr>
   <th>ID</th>
@@ -23,6 +22,7 @@ template:
   </td>
 </tr>
 </table>
+-->
 
 ## 1. API for user-related functionalities
 
@@ -51,16 +51,16 @@ template:
   <td>n/a</td>
   <td>
     <pre>
-    {
-      name:string,
-      birthdate:sting,
-      address:string,
-      postal_code:string,
-      nif:int,
-      phone:int,
-      email:string,
-      username:string
-    }
+{
+  name:string,
+  birthdate:sting,
+  address:string,
+  postal_code:string,
+  nif:int,
+  phone:int,
+  email:string,
+  username:string
+}
     </pre>
   </td>
 </tr>
@@ -182,13 +182,13 @@ template:
   <td>n/a</td>
   <td>
     <pre>
-    {
-       "books": [
-      {id:int, title:string, price:float, cover:string},
-      {id:int, title:string, price:float, cover:string},
-      ...
-      ]   
-    }
+{
+   "books": [
+  {id:int, title:string, price:float, cover:string},
+  {id:int, title:string, price:float, cover:string},
+  ...
+  ]   
+}
     </pre>
   </td>
 </tr>
@@ -204,6 +204,45 @@ template:
 
 ## 4. API for past sales information
 
-|ID|Method|Route|Description|Body|
-|---|---|---|---|---|
-401|GET|/user/{id}/history|Gets all the sales history of the user|n/a|
+<table>
+<tr>
+  <th>ID</th>
+  <th>Method</th>
+  <th>Route</th>
+  <th>Description</th>
+  <th>Body</th>
+  <th>Return</th>
+</tr>
+<tr>
+  <td>401</td>
+  <td>GET</td>
+  <td>/user/{id}/history</td>
+  <td>Gets all the sales history of the user</td>
+  <td>n/a</td>
+  <td>
+    <pre>
+{
+  orders: [
+    {
+      order_id:int,
+      total_price:float,
+      payment_method:string,
+      date:string,
+      status:string,
+      items: [
+        {book_id:int, cover:string},
+        {book_id:int, cover:string},
+        ...
+      ]
+    },
+    {
+      ...
+    },
+    ...
+  ]
+}
+    </pre>
+  </td>
+</tr>
+</table>
+
