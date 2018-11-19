@@ -11,7 +11,7 @@ template:
   <th>Route</th>
   <th>Description</th>
   <th>Body</th>
-  <th>Returned JSON</th>
+  <th>Return</th>
 </tr>
 <tr>
   <td></td>
@@ -46,7 +46,7 @@ template:
 <tr>
   <td>102</td>
   <td>GET</td>
-  <td>/user/{id></td>
+  <td>/user/{id}</td>
   <td>Get the profile of an user</td>
   <td>n/a</td>
   <td>
@@ -149,12 +149,58 @@ template:
 
 ## 3. API for purchases
 
-|ID|Method|Route|Description|Body|
-|---|---|---|---|---|
-301|PUT|/user/{user_id}/cart/{book_id}|Adds a book to the user's cart| n/a|
-302|DELETE|/user/{user_id}/cart/{book_id}|Removes a book from the user's cart| n/a|
-303|GET|/user/{id}/cart|Gets all the items on the user's cart| n/a|
-304|PUT|/user/{id}/purchase|Finalizes the purchase of the current books in the cart|n/a|
+<table>
+<tr>
+  <th>ID</th>
+  <th>Method</th>
+  <th>Route</th>
+  <th>Description</th>
+  <th>Body</th>
+  <th>Return</th>
+</tr>
+<tr>301|PUT||| n/a|
+  <td>301</td>
+  <td>PUT</td>
+  <td>/user/{user_id}/cart/{book_id}</td>
+  <td>Adds a book to the user's cart</td>
+  <td>n/a</td>
+  <td>Code 200 if OK, 500 otherwise</td>
+</tr>
+<tr>
+  <td>302</td>
+  <td>DELETE</td>
+  <td>/user/{user_id>/cart/{book_id}</td>
+  <td>Removes a book from the user's cart</td>
+  <td>n/a</td>
+  <td>Code 200 if OK, 500 otherwise</td>
+</tr>
+<tr>
+  <td>303</td>
+  <td>GET</td>
+  <td>/user/{id}/cart</td>
+  <td>Gets all the items on the user's cart</td>
+  <td>n/a</td>
+  <td>
+    <pre>
+    {
+       "books": [
+      {id:int, title:string, price:float, cover:string},
+      {id:int, title:string, price:float, cover:string},
+      ...
+      ]   
+    }
+    </pre>
+  </td>
+</tr>
+<tr>
+  <td>304</td>
+  <td>PUT</td>
+  <td>/user/{id}/purchase</td>
+  <td>Finalizes the purchase of the current books in the cart</td>
+  <td>n/a</td>
+  <td>Code 200 if OK, 500 otherwise</td>
+</tr>
+</table>
 
 ## 4. API for past sales information
 
