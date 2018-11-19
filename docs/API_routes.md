@@ -1,5 +1,7 @@
 # Primavera API for the Online BookShop Web App
 
+The API between Primavera and our Web app will be a REST API whose content will be serialized C# objects, given that both Primavera and our Web app, written in ASP.NET, use this language.
+
 ## 1. API for user-related functionalities
 
 |ID|Method|Route|Description|Body|
