@@ -53,6 +53,7 @@ template:
     <pre>
 {
   title:string,
+  price:float,
   publisher:string,
   synopsis:string,
   image:string,
@@ -73,7 +74,15 @@ template:
   <td>Gets all books from a given category</td>
   <td>n/a</td>
   <td>
-
+    <pre>
+{
+  "books": [
+    {id:int, title:string, price:float, cover:string},
+    {id:int, title:string, price:float, cover:string},
+    ...
+    ]
+}
+</pre>
   </td>
 </tr>
 <tr>
@@ -83,7 +92,15 @@ template:
   <td>Get all books that match the specified parameters</td>
   <td>isbn, title, publisher</td>
   <td>
-
+    <pre>
+{
+  "books": [
+    {id:int, title:string, price:float, cover:string},
+    {id:int, title:string, price:float, cover:string},
+    ...
+    ]
+}
+    </pre>
   </td>
 </tr>
 </table>
