@@ -14,7 +14,7 @@ The API between Primavera and our Web app will be a REST API whose content will 
 
 |ID|Method|Route|Description|Body|Returned JSON|
 |---|---|---|---|---|
-201|GET|/book/{id}|Gets all info about a book|n/a|```
+201|GET|/book/{id}|Gets all info about a book|n/a|<pre>
 {
   title:string,
   publisher:string,
@@ -26,7 +26,7 @@ The API between Primavera and our Web app will be a REST API whose content will 
   lang:string,
   dimensions:string,
   cover_type:string
-}```|
+}</pre>|
 202|GET|/categories/{category}|Gets all books from a given category|n/a|
 203|POST|/search|Get all books that match the specified parameters|n/a|
 
