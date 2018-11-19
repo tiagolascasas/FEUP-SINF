@@ -1,0 +1,167 @@
+.container {
+    padding-top: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+strong {
+    display:inline-block;
+    width:140px;
+    text-align:right;
+}
+
+.list-group {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a.nav-link {
+    text-decoration: none;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 0;
+}
+
+.navbar {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#profile-pic {
+    max-width:100%;
+    max-height:100%;
+}
+
+.card {
+    border: 0;
+}
+
+.card-body {
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-right: 1px solid rgba(0,0,0,.125);
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border-bottom: 0;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-pic {
+    max-width:100%;
+    max-height:100%;
+}
+
+.payMethod-pic {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+}
+
+.content-container {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.card-body#paymentMethod {
+    border: 0;
+}
+
+.btn.btn-success {
+    width: 100%;
+}
+
+.order-item {
+    margin-bottom: 15px;
+}
+
+.page-selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    border: 0;
+    color: black;
+}
+
+.page-arrow {
+    border: 0;
+    background-color: #314d67;
+    color: white;
+}
+
+.pricewtiva {
+    text-align: center;
+}
+
+@media only screen and (max-width: 575px) {
+    .bookcover {
+        display: none;
+    }
+
+    .qtyselect {
+        padding: 0;
+    }
+
+    .row {
+        flex-wrap: wrap !important;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .col-sm-2.col-form-label {
+        font-size: small;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card-header .row {
+        display: none;
+    }
+
+    .pricewoiva {
+        display: none;
+    }
+
+    .pricewtiva {
+        text-align: left;
+        margin: 10px;
+    }
+
+    .qtyselect {
+        margin: 10px;
+    }
+
+    .bookname {
+        margin: 10px;
+    }
+
+    .bookcover {
+        margin: 10px;
+    }
+
+    .paymethod {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .row {
+        flex-wrap: nowrap;
+    }
+
+    .col-sm-2.col-form-label {
+        font-size: small;
+    }
+}
