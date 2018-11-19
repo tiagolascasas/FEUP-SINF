@@ -13,9 +13,11 @@ body{
     line-height:1.4
 }
 
+/*
 .carousel-inner .item img[src$=".svg"]{
     width:100%
 }
+*/
 
 #qrCode{
     margin:15px

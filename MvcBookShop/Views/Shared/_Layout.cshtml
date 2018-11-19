@@ -11,6 +11,8 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/navbar.css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  
     </environment>
 
     <environment exclude="Development">
@@ -19,10 +21,15 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <!--
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    -->
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav id="navbarHeader" class="navbar navbar-inverse navbar-fixed-top navbar-custom">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -40,31 +47,24 @@
                     </span>
                 </button>
 
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                    BookShop
+                <a id="aLogo" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <img id="logoNavbar" src="./images/Logo.png" alt="logo"/>
                 </a>
             </div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
-                            Home
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="About">
-                            About
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
+	        <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div id="imaginary_container"> 
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control"  placeholder="Search" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
