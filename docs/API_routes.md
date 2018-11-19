@@ -26,6 +26,8 @@ The API between Primavera and our Web app will be a REST API whose return values
 
 ## 1. API for user-related functionalities
 
+This API deals with all the stuff regarding an user/client, such as their registration and profile information.
+
 <table>
 <tr>
   <th>ID</th>
@@ -74,7 +76,9 @@ The API between Primavera and our Web app will be a REST API whose return values
 </tr>
 </table>
 
-## 2. API for books
+## 2. API for book-related functionalities
+
+This API deals with all functionalities related to books, such as getting the details of each one and getting lists of books by category or by search parameters.
 
 <table>
 <tr>
@@ -149,6 +153,8 @@ The API between Primavera and our Web app will be a REST API whose return values
 
 ## 3. API for purchases
 
+This API deals with the functionalities related to the purchasing process, allowing the addition or removal of items to the user's cart and to finalize a purchase.
+
 <table>
 <tr>
   <th>ID</th>
@@ -197,7 +203,7 @@ The API between Primavera and our Web app will be a REST API whose return values
   <td>PUT</td>
   <td>/user/{id}/purchase</td>
   <td>Finalizes the purchase of the current books in the cart</td>
-  <td>n/a</td>
+  <td>cc_number, cc_verification_code, cc_expiration, cc_owner</td>
   <td>Code 200 if OK, 500 otherwise</td>
 </tr>
 </table>
