@@ -113,6 +113,7 @@ label {
 
     .qtyselect {
         padding: 0;
+        margin: 0 !important;
     }
 
     .row {
@@ -138,13 +139,17 @@ label {
     .howpayed {
         display: none;
     }
-}
 
-@media only screen and (max-width: 768px) {
     .card-header .row {
         display: none;
     }
 
+    .orderpage-card {
+        font-size: small;
+    }
+}
+
+@media only screen and (max-width: 768px) {
     .pricewoiva {
         display: none;
     }
@@ -173,6 +178,11 @@ label {
 
     .row {
         flex-wrap: nowrap;
+        display: block;
+    }
+
+    .orderpage-card {
+        max-width: 100%;
     }
 
     .col-sm-2.col-form-label {
