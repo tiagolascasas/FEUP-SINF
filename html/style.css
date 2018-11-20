@@ -120,9 +120,23 @@ label {
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    .col-md-1 {
+        font-size: small;
+    }
+
+    .col-md-2 {
+        font-size: small;
+    }
+}
+
 @media only screen and (max-width: 990px) {
     .col-sm-2.col-form-label {
         font-size: small;
+    }
+
+    .howpayed {
+        display: none;
     }
 }
 
