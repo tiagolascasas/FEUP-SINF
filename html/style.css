@@ -1,6 +1,9 @@
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .container {
     padding-top: 15px;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 strong {
@@ -26,7 +29,7 @@ a.nav-link {
 }
 
 #profile-pic {
-    max-width:100%;
+    width:100%;
     max-height:100%;
 }
 
@@ -144,7 +147,15 @@ label {
         display: none;
     }
 
+    .profilepage-card {
+        font-size: small;
+    }
+
     .orderpage-card {
+        font-size: small;
+    }
+
+    .list-group {
         font-size: small;
     }
 }
@@ -181,8 +192,14 @@ label {
         display: block;
     }
 
+    .profilepage-card {
+        max-width: 100%;
+        font-size: initial !important;
+    }
+
     .orderpage-card {
         max-width: 100%;
+        font-size: initial !important;
     }
 
     .col-sm-2.col-form-label {
