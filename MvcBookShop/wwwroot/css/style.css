@@ -1,11 +1,11 @@
 body {
-    font-size: initial;
+    font-size: initial !important;
 }
 
-h1 {
+h1, .h1 {
     font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
 }
-
 .container {
     padding-top: 15px;
 }
@@ -109,14 +109,22 @@ label {
 }
 
 .page-link {
-    border: 0;
-    color: black;
+    border: 0 !important;
+    color: black !important;
+}
+
+.page-item.active .page-link {
+    background-color: #6d73a3 !important;
+}
+
+.active a {
+    color: white !important;
 }
 
 .page-arrow {
-    border: 0;
-    background-color: #314d67;
-    color: white;
+    border: 0 !important;
+    background-color: #314d67 !important;
+    color: white !important;
 }
 
 .pricewtiva {
@@ -153,6 +161,10 @@ label {
         font-size: small;
     }
 
+    .book-card.col-sm-2 {
+        font-size: small;
+    }
+
     .howpayed {
         display: none;
     }
@@ -172,9 +184,21 @@ label {
     .list-group {
         font-size: small;
     }
+
+    .book-name {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 768px) {
+    .book-card.col-sm-2 {
+        max-width: 100% !important;
+    }
+
+    .book-card.col-sm-2 {
+        font-size: inherit;
+    }
+
     .pricewoiva {
         display: none;
     }
@@ -193,11 +217,11 @@ label {
     }
 
     .bookname {
-        margin: 10px;
+        margin: 10px !important;
     }
 
     .bookcover {
-        margin: 10px;
+        margin: 10px !important;
     }
 
     .col-form-label {
@@ -226,5 +250,9 @@ label {
 
     .col-sm-2.col-form-label {
         font-size: small;
+    }
+
+    .book-name {
+        display: initial;
     }
 }
