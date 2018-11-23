@@ -1,29 +1,13 @@
-nav#navbarHeader.navbar.navbar-inverse.navbar-fixed-top.navbar-custom{
-    background-color: #334e67;
-    border-color: #334e67;
-    color: #ffffff;
+nav#navbarHeader.navbar.navbar-light.bg-light.fixed-top{
+    color: #334e67;
+    background-color: #334e67 !important;
 }
 
-a#aLogo.navbar-brand{
-    padding-top: 0px;
+a.navbar-brand{
+    display: table;
 }
 
-img#logoNavbar{
+img#logoHeader.d-inline-block.align-top{
     height: auto;
-    width: 15%;
-}
-
-.stylish-input-group .input-group-addon{
-    background: white !important; 
-}
-
-.stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
-	border-color:#ccc;
-}
-
-.stylish-input-group button{
-    border:0;
-    background:transparent;
+    width: 38%;
 }

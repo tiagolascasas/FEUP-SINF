@@ -10,12 +10,12 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+                    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+                    crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/navbar.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="~/Style/style.css">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  
         <link rel="stylesheet" href="~/css/style.css" />
     </environment>
 
@@ -33,45 +33,30 @@
 </head>
 
 <body>
-    <nav id="navbarHeader" class="navbar navbar-inverse navbar-fixed-top navbar-custom">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">
-                        Toggle navigation
-                    </span>
-                    
-                    <span class="icon-bar">
-                    </span>
-                    
-                    <span class="icon-bar">
-                    </span>
-                    
-                    <span class="icon-bar">
-                    </span>
-                </button>
+    <nav id="navbarHeader" class="navbar navbar-light bg-light fixed-top">
+        <div class="col-sm-4">
+        <a class="navbar-brand" href="#">
+            <img id="logoHeader" src="./images/Logo_marcaAgua.png" class="d-inline-block align-top" alt="logo">
+        </a>
+        </div>
 
-                <a id="aLogo" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                    <img id="logoNavbar" src="./images/Logo.png" alt="logo"/>
-                </a>
-            </div>
-
-	        <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div id="imaginary_container"> 
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                                <button type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>  
-                            </span>
-                        </div>
+        <div class="col-sm-4">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username" 
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                            Button
+                        </button>
                     </div>
-                </div>
             </div>
         </div>
+
+        <div class="col-sm-4">
+            <!-- Login/Register -->
+        </div>
     </nav>
+
     <nav class="navbar navbar-dark" style="background-color: #6d73a3">
         <!-- Navbar content -->
         <ul class="nav justify-content-center">
