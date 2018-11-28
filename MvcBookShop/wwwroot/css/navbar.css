@@ -1,6 +1,7 @@
-nav#navbarHeader.navbar.navbar-light.bg-light.fixed-top{
+nav#navbarHeader.navbar.navbar-light.bg-light{
     color: #334e67;
     background-color: #334e67 !important;
+    margin-bottom: 0px;
 }
 
 a.navbar-brand{
@@ -10,4 +11,8 @@ a.navbar-brand{
 img#logoHeader.d-inline-block.align-top{
     height: auto;
     width: 38%;
+}
+
+nav#subNavbar.navbar.navbar-dark{
+    background-color: #6d73a3;
 }
