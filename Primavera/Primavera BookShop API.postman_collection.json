@@ -140,12 +140,12 @@
 							"listen": "test",
 							"script": {
 								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
-								"type": "text/javascript",
 								"exec": [
 									"var data = JSON.parse(responseBody)",
 									"pm.environment.set(\"secondToken\", data.access_token);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -193,6 +193,11 @@
 								{
 									"key": "grant_type",
 									"value": "{{grandType}}",
+									"type": "text"
+								},
+								{
+									"key": "line",
+									"value": "{{line}}",
 									"type": "text"
 								}
 							]
