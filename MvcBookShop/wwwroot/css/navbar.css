@@ -15,4 +15,5 @@ img#logoHeader.d-inline-block.align-top{
 
 nav#subNavbar.navbar.navbar-dark{
     background-color: #6d73a3;
+    margin-bottom: 0px;
 }
