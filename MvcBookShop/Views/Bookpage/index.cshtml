@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "Book page";
+}
+
+<style>
+    div#divBookPage.container-fluid{
+        padding-top: 5%;
+    }
+
+    img#imgBook{
+        height: auto;
+        width: 80%;
+    }
+
+    div#sinopseBookPage.row{
+        padding-top: 5%;
+    }
+
+    h1#priceBookPage{
+        text-align: right;
+    }
+
+    h2#h2SinopseBookPage{
+        font-weight: bold;
+    }
+
+    p#resume{
+        text-align: justify;
+    }
+</style>
+
+<div id="divBookPage" class="container-fluid">
+    <div class="col-sm-5">
+        <img id="imgBook" src="./images/502x.jpeg">
+    </div>
+
+    <div class="col-sm-7">
+        <div class="row">
+            <div class="col-sm-8" style="padding-left: 0px;">
+                <h1>
+                    Sem Segredos!
+                </h1>
+            </div>
+
+            <div class="col-sm-4">
+                <h1 id="priceBookPage">
+                    14,99€
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8" style="padding-left: 0px;">
+                <h3>
+                    de Marco Costa
+                </h3>
+            </div>
+
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-success">
+                    <i class="fas fa-shopping-cart">
+                    </i>
+                    
+                    Add cart
+                </button>
+            </div>
+        </div>
+
+        <div id="sinopseBookPage" class="row">
+            <h2 id="h2SinopseBookPage">
+                Sinopse
+            </h2>
+
+            <p id="resume">
+                Depois do sucesso de Receitas com Segredo - atualmente com 14 edições -; de uma
+                rubrica televisiva, Tortas e Travessas, ao lado de Fátima Lopes, no programa A 
+                Tarde é Sua, que conquistou o seu lugar nas preferências das audiências; e dos 
+                incontáveis pedidos do seu crescente e exigente número de fãs para que publicasse 
+                mais receitas, surge agora Sem Segredos!, o novo livro de receitas de Marco Costa, 
+                o pasteleiro mais famoso da televisão portuguesa. 
+                
+                Tal como as do livro anteriores, são receitas caseiras, genuínas, com o toque pessoal 
+                do autor, que exalam carinho e felicidade. São bolos, tartes, bolachas, brigadeiros, 
+                queijadas e muitos outros doces, para comer e chorar por mais! Dos Brigadeiros de Coco 
+                à Tarte de Limão Merengada, passando pelos famosos Ovos de Chocolate e o Bolo-Rei de 
+                Nutella, não há como não cair em tentação. 
+                
+                Mas há igualmente espaço para doces em versão mais saudável como o Bolo de Chocolate 
+                sem Farinha, os Brownies Saudáveis ou os Queques Saudáveis. E o Marco dá igualmente 
+                ideias para comemorarmos os dias que nos são mais queridos, seja o Dia dos Namorados, 
+                do Pai, da Mãe, o Natal, entre outros, ou até mesmo os mais divertidos, como o Carnaval 
+                e o Halloween. Deitem mãos à obra, experimentem fazer as receitas, provem, lambuzem-se, 
+                dêem a provar e sejam felizes! 
+                
+                Se gostaram do Receitas com Segredo vão adorar este Sem Segredos!
+            </p>
+        </div>
+
+        <div id="sinopseBookPage" class="row">
+            <h2 id="h2SinopseBookPage">
+                Details
+            </h2>
+        </div>
+    </div>
+</div>
