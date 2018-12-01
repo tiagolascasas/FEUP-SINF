@@ -2,6 +2,39 @@
 
 The API between Primavera and our Web app will be a REST API whose return values will be either HTTP codes or JSON strings.
 
+## Splash Page
+
+![](img/Untitled Diagram.png)
+
+<table>
+<tr>
+  <th>Webservice ID</th><th>Webservice Description</th><th>Related Core View(s)</th><th>Input example</th><th>Expected Output</th>
+</tr>
+<tr>
+  <td>WS01</td>
+  <td>Creates a new user/client</td>
+  <td>Splash Page</td>
+  <td>
+<pre>
+{
+    "Cliente": "1",
+    "Nome": "Manfred Reubens",
+    "Morada": "Praceta Conde Arnoso 60",
+    "CodigoPostal": "2640-467",
+    "Telefone": "6705966965",
+    "NumContribuinte": "64287048860",
+    "Pais": "PT",
+    "Moeda": "EUR"
+}
+</pre>
+  </td>
+  <td>
+
+  </td>
+</tr>
+</table>
+
+
 <!--template
 <table>
 <tr>
@@ -24,6 +57,7 @@ The API between Primavera and our Web app will be a REST API whose return values
 </table>
 -->
 
+<!--
 ## 1. API for user-related functionalities
 
 This API deals with all the stuff regarding an user/client, such as their registration and profile information.
@@ -250,4 +284,4 @@ This API allows for the listing of all orders made by an user and their current 
   </td>
 </tr>
 </table>
-
+-->
