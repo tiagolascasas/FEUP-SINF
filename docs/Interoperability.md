@@ -24,8 +24,7 @@ The API between Primavera and our Web app will be a REST API whose return values
     "Telefone": "6705966965",
     "NumContribuinte": "64287048860",
     "Pais": "PT",
-    "Moeda": "EUR",
-    "password_sha2": "8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92"
+    "Moeda": "EUR"
 }
 </pre>
   </td>
@@ -37,21 +36,91 @@ The API between Primavera and our Web app will be a REST API whose return values
   <td>Profile Page</td>
   <td>
 <pre>
-"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib from Clientes" INCOMPLETE
+Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib, CDU_email, CDU_password_hash from Clientes where Cliente = 'TIAGO'
+</pre>
+  </td>
+  <td>
+<pre>
+{
+    "DataSet": {
+        "Table": [
+            {
+                "Cliente": "TIAGO",
+                "Nome": "Tiago Santos",
+                "Fac_Mor": "Rua Eng. Farinas de Almeida, 313, 4º esq",
+                "Fac_Local": null,
+                "Fac_Tel": "961843943",
+                "NumContrib": "64287048860",
+                "CDU_email": null,
+                "CDU_password_hash": "03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4"
+            }
+        ]
+    },
+    "Query": "System.Data.SqlClient.SqlCommand"
+}
+</pre>
+  </td>
+</tr>
+<tr>
+  <td>WS03</td>
+  <td>Updates the information of an user/client</td>
+  <td>Profile Page</td>
+  <td>
+<pre>
+"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib from Clientes"
 </pre>
   </td>
   <td>INCOMPLETE</td>
 </tr>
 <tr>
-  <td>WS03</td>
-  <td>Gets the relevant information of an user/client</td>
-  <td>Profile Page</td>
+  <td>WS04</td>
+  <td>Gets all the information of a book</td>
+  <td>Book page</td>
   <td>
 <pre>
-"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib from Clientes" INCOMPLETE
+"Select Descricao, CDU_descricao, CDU_ISBN, CDU_Editora, CDU_Idioma, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, CDU_Categoria from Artigo where Artigo = 'B0001'"
 </pre>
   </td>
-  <td>INCOMPLETE</td>
+  <td>
+<pre>
+{
+    "DataSet": {
+        "Table": [
+            {
+                "Descricao": "Livro",
+                "CDU_Titulo": "A Brief History Of Time",
+                "CDU_Autor": "Stephen Hawking",
+                "CDU_descricao": "Was there a beginning of time? Could time run backwards? Is the universe infinite or does it have boundaries? ",
+                "CDU_ISBN": "0857501003",
+                "CDU_Editora": "Transworld Publishers Ltd",
+                "CDU_Idioma": "EN",
+                "CDU_Capa": "Paperback",
+                "CDU_Paginas": 272,
+                "CDU_Ano": "05 Feb 2015",
+                "CDU_Dimensoes": "127 x 198 x 17mm",
+                "CDU_Categoria": "Science"
+            }
+        ]
+    },
+    "Query": "System.Data.SqlClient.SqlCommand"
+}
+</pre>
+  </td>
+</tr>
+<tr>
+  <td>WS05</td>
+  <td>Gets a set of books that belong to the specified category</td>
+  <td>Book page</td>
+  <td>
+<pre>
+"Select Descricao, CDU_Titulo, CDU_Autor, CDU_descricao, CDU_ISBN, CDU_Editora, CDU_Idioma, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, CDU_Categoria from Artigo where CDU_Categoria = 'Romance'"
+</pre>
+  </td>
+  <td>
+<pre>
+INCOMPLETE
+</pre>
+  </td>
 </tr>
 </table>
 

@@ -1,11 +1,923 @@
 {
 	"info": {
-		"_postman_id": "0d2e908e-46ca-4808-b0e8-9b246d93d9ba",
+		"_postman_id": "34d3c9ab-858b-4c0e-9025-34241d44eb2a",
 		"name": "BookShop Primavera API",
 		"description": "Primavera.WebAPI collection is for testing all the power and capability of the API developed at Primavera BSS.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Web Services",
+			"item": [
+				{
+					"name": "WS00 - Template for SQL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Select * from Artigo\""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Administrador/Consulta",
+							"host": [
+								"{{apiUrl}}Administrador"
+							],
+							"path": [
+								"Consulta"
+							]
+						},
+						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+					},
+					"response": [
+						{
+							"name": "Second Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "{{company}}",
+											"type": "text"
+										},
+										{
+											"key": "instance",
+											"value": "{{instance}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "{{grandType}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}token",
+									"host": [
+										"{{apiUrl}}token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
+						}
+					]
+				},
+				{
+					"name": "WS01 - Create customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Cliente\": \"TIAGO2\",\n    \"Nome\": \"Tiago Santos\",\n    \"Morada\": \"Rua Eng. Farinas de Almeida, 313, 4º esq\",\n    \"CodigoPostal\": \"4510-260\",\n    \"Telefone\": \"961843943\",\n    \"NumContribuinte\": \"64287048860\",\n    \"Pais\": \"PT\",\n    \"Moeda\": \"EUR\"\n}"
+						},
+						"url": {
+							"raw": "{{apiUrl}}Base/Clientes/Actualiza",
+							"host": [
+								"{{apiUrl}}Base"
+							],
+							"path": [
+								"Clientes",
+								"Actualiza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WS02 - Get customer information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib, CDU_email, CDU_password_hash from Clientes where Cliente = 'TIAGO'\""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Administrador/Consulta",
+							"host": [
+								"{{apiUrl}}Administrador"
+							],
+							"path": [
+								"Consulta"
+							]
+						},
+						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+					},
+					"response": [
+						{
+							"name": "Second Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "{{company}}",
+											"type": "text"
+										},
+										{
+											"key": "instance",
+											"value": "{{instance}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "{{grandType}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}token",
+									"host": [
+										"{{apiUrl}}token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
+						}
+					]
+				},
+				{
+					"name": "WS03 - Update customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Update Clientes set Fac_Local = 'local' where Cliente = 'TIAGO'\""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Administrador/Consulta",
+							"host": [
+								"{{apiUrl}}Administrador"
+							],
+							"path": [
+								"Consulta"
+							]
+						},
+						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+					},
+					"response": [
+						{
+							"name": "Second Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "{{company}}",
+											"type": "text"
+										},
+										{
+											"key": "instance",
+											"value": "{{instance}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "{{grandType}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}token",
+									"host": [
+										"{{apiUrl}}token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
+						}
+					]
+				},
+				{
+					"name": "WS04 - Get book information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Select Descricao, CDU_Titulo, CDU_Autor, CDU_descricao, CDU_ISBN, CDU_Editora, CDU_Idioma, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, CDU_Categoria from Artigo where Artigo = 'B0001'\""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Administrador/Consulta",
+							"host": [
+								"{{apiUrl}}Administrador"
+							],
+							"path": [
+								"Consulta"
+							]
+						},
+						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+					},
+					"response": [
+						{
+							"name": "Second Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "{{company}}",
+											"type": "text"
+										},
+										{
+											"key": "instance",
+											"value": "{{instance}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "{{grandType}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}token",
+									"host": [
+										"{{apiUrl}}token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
+						}
+					]
+				},
+				{
+					"name": "WS05 - Get a set of books of category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Select Descricao, CDU_Titulo, CDU_Autor, CDU_descricao, CDU_ISBN, CDU_Editora, CDU_Idioma, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, CDU_Categoria from Artigo where CDU_Categoria = 'Romance'\""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Administrador/Consulta",
+							"host": [
+								"{{apiUrl}}Administrador"
+							],
+							"path": [
+								"Consulta"
+							]
+						},
+						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+					},
+					"response": [
+						{
+							"name": "Second Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "{{company}}",
+											"type": "text"
+										},
+										{
+											"key": "instance",
+											"value": "{{instance}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "{{grandType}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}token",
+									"host": [
+										"{{apiUrl}}token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Token",
 			"item": [
@@ -683,7 +1595,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"Artigo\": \"A000123\",\n    \"Descricao\": \"Pentium C200\",\n    \"Caracteristicas\": \"\",\n    \"CodBarras\": \"\",\n    \"UnidadeBase\": \"UN\",\n    \"IVA\": \"20\",\n    \"Peso\": 0,\n    \"Volume\": 0,\n    \"Marca\": \"\"\n}"
+							"raw": "{\n    \"Artigo\": \"A1234\",\n    \"Descricao\": \"SQL for beginners\",\n    \"Caracteristicas\": \"\",\n    \"CodBarras\": \"\",\n    \"UnidadeBase\": \"UN\",\n    \"IVA\": \"6\",\n    \"Peso\": 0,\n    \"Volume\": 0,\n    \"Marca\": \"\"\n}"
 						},
 						"url": {
 							"raw": "{{apiUrl}}Base/Artigos/Actualiza/",
@@ -1048,15 +1960,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{apiUrl}}Base/Clientes/DaValorAtributo/ALCAD/Nome",
+							"raw": "{{apiUrl}}Base/Clientes/DaValorAtributo/ALCAD",
 							"host": [
 								"{{apiUrl}}Base"
 							],
 							"path": [
 								"Clientes",
 								"DaValorAtributo",
-								"ALCAD",
-								"Nome"
+								"ALCAD"
 							]
 						}
 					},
@@ -1089,43 +2000,6 @@
 							"path": [
 								"Clientes",
 								"LstClientes"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create customer",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{secondToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"Cliente\": \"NUNOA\",\n    \"Nome\": \"Soluciones Cad de qwerty\",\n    \"Descricao\": \"qwerty1234\",\n    \"Morada\": \"PASSEO DE PORTUGAL, 12345\",\n    \"Localidade\": \"VILANUEVA DE ARRIBA\",\n    \"CodigoPostal\": \"61001\",\n    \"LocalidadeCodigoPostal\": \"MADRID\",\n    \"Telefone\": \"00.034.1.474747447\",\n    \"Fax\": \"00.034.1.4374747474\",\n    \"EnderecoWeb\": \"http://alcad.es\",\n    \"Distrito\": \"\",\n    \"NumContribuinte\": \"989922456\",\n    \"Pais\": \"ES\",\n    \"Moeda\": \"EUR\"\n}"
-						},
-						"url": {
-							"raw": "{{apiUrl}}Base/Clientes/Actualiza",
-							"host": [
-								"{{apiUrl}}Base"
-							],
-							"path": [
-								"Clientes",
-								"Actualiza"
 							]
 						}
 					},
