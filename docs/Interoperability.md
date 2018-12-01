@@ -24,13 +24,34 @@ The API between Primavera and our Web app will be a REST API whose return values
     "Telefone": "6705966965",
     "NumContribuinte": "64287048860",
     "Pais": "PT",
-    "Moeda": "EUR"
+    "Moeda": "EUR",
+    "password_sha2": "8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92"
 }
 </pre>
   </td>
+  <td>HTTP 204</td>
+</tr>
+<tr>
+  <td>WS02</td>
+  <td>Gets the relevant information of an user/client</td>
+  <td>Profile Page</td>
   <td>
-
+<pre>
+"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib from Clientes" INCOMPLETE
+</pre>
   </td>
+  <td>INCOMPLETE</td>
+</tr>
+<tr>
+  <td>WS03</td>
+  <td>Gets the relevant information of an user/client</td>
+  <td>Profile Page</td>
+  <td>
+<pre>
+"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib from Clientes" INCOMPLETE
+</pre>
+  </td>
+  <td>INCOMPLETE</td>
 </tr>
 </table>
 
