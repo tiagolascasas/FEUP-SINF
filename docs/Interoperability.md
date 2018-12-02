@@ -200,7 +200,7 @@ where Familia = 'IT' and Artigo.Artigo = ArtigoMoeda.Artigo
 <table>
   <tr><td>Web Service</td><td>WS06</td></tr>
   <tr><td>Description</td><td>Searches books by title, including partial strings</td></tr>
-  <tr><td>Related Core Views</td><td>Splash page</td></tr>
+  <tr><td>Related Core Views</td><td>Splash page, Search Results Page</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
