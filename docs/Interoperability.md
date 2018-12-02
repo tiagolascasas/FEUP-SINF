@@ -1,6 +1,6 @@
 # Primavera API for the Online BookShop Web App
 
-<table>
+<table style="width: 100%;">
 <tr>
   <th>Webservice ID</th><th>Webservice Description</th><th>Related Core View(s)</th><th>Input example</th><th>Expected Output</th>
 </tr>
@@ -200,7 +200,7 @@ where Familia = 'IT' and Artigo.Artigo = ArtigoMoeda.Artigo
 <table>
   <tr><td>Web Service</td><td>WS06</td></tr>
   <tr><td>Description</td><td>Searches books by title, including partial strings</td></tr>
-  <tr><td>Related Core Views</td><td>Splash page</td></tr>
+  <tr><td>Related Core Views</td><td>Splash page, Search Results Page</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -293,7 +293,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual
 <table>
   <tr><td>Web Service</td><td>WS08</td></tr>
   <tr><td>Description</td><td>Gets a list of books ordered by the last date they were updated (first is the most recent)</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>Splash page</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -350,8 +350,13 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table>
   <tr><td>Web Service</td><td>WS09</td></tr>
   <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
+<<<<<<< HEAD
   <tr><td>Related Core Views</td><td>Book page</td></tr>
   <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
+=======
+  <tr><td>Related Core Views</td><td>Splash page</td></tr>
+  <tr><td>Route</td><td>Administrador/Consulta</td></tr>
+>>>>>>> a0710b8823c09bd9ed86a80acfaa76a3d1ad5202
   <tr><td>Input example</td><td>
 <pre>
 {
