@@ -349,7 +349,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 
 <table>
   <tr><td>Web Service</td><td>WS08</td></tr>
-  <tr><td>Description</td><td>Makes a purchase of the specified items, producing a receipt/invoice</td></tr>
+  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
   <tr><td>Related Core Views</td><td>Book page</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
@@ -365,7 +365,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
       "Quantidade": "1"
     }
   ],
-  "Tipodoc": "FR",
+  "Tipodoc": "FAR",
   "Serie": "A",
   "Entidade": "C0001",
   "TipoEntidade": "C",
@@ -373,5 +373,5 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
   "DataVenc":"12/12/2018"
 }
 </pre></td></tr>
-  <tr><td>Expected Output</td><td>HTTP 204</td></tr>
+  <tr><td>Expected Output</td><td>true</td></tr>
 </table>
