@@ -1,15 +1,9 @@
 # Primavera API for the Online BookShop Web App
 
-<table style="width: 100%;">
-<tr>
-  <th>Webservice ID</th><th>Webservice Description</th><th>Related Core View(s)</th><th>Input example</th><th>Expected Output</th>
-</tr>
-</table>
-
 <table>
   <tr><td>Web Service</td><td>WS01</td></tr>
   <tr><td>Description</td><td>Creates a new user/client</td></tr>
-  <tr><td>Related Core Views</td><td>Splash Page</td></tr>
+  <tr><td>Related Core Views</td><td>V_001</td></tr>
   <tr><td>Route</td><td>Base/Clientes/Atualiza</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -30,7 +24,7 @@
 <table>
   <tr><td>Web Service</td><td>WS02</td></tr>
   <tr><td>Description</td><td>Gets the relevant information of an user/client</td></tr>
-  <tr><td>Related Core Views</td><td>Profile Page</td></tr>
+  <tr><td>Related Core Views</td><td>V_001, V_006, V_008</td></tr>
   <tr><td>Route</td><td>Base/Clientes/Edita/{cliente_id}</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -76,7 +70,7 @@ cliente_id = "TIAGO" (parameter in the route)
 <table>
   <tr><td>Web Service</td><td>WS03</td></tr>
   <tr><td>Description</td><td>Updates the information of an user/client</td></tr>
-  <tr><td>Related Core Views</td><td>Profile Page</td></tr>
+  <tr><td>Related Core Views</td><td>V_008</td></tr>
   <tr><td>Route</td><td>Base/Clientes/Actualiza</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -123,7 +117,7 @@ cliente_id = "TIAGO" (parameter in the route)
 <table>
   <tr><td>Web Service</td><td>WS04</td></tr>
   <tr><td>Description</td><td>Gets all the relevant information of a book</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>V_004, V_005, V_006, V_007</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -163,7 +157,7 @@ where Artigo.Artigo = 'B0001' and Artigo.Artigo = ArtigoMoeda.Artigo
 <table>
   <tr><td>Web Service</td><td>WS05</td></tr>
   <tr><td>Description</td><td>Gets a set of books that belong to the specified category</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>V_001, V_004</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -200,7 +194,7 @@ where Familia = 'IT' and Artigo.Artigo = ArtigoMoeda.Artigo
 <table>
   <tr><td>Web Service</td><td>WS06</td></tr>
   <tr><td>Description</td><td>Searches books by title, including partial strings</td></tr>
-  <tr><td>Related Core Views</td><td>Splash page, Search Results Page</td></tr>
+  <tr><td>Related Core Views</td><td>V_006, V_001</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -236,7 +230,7 @@ where Descricao like '%Intro%' and Artigo.Artigo = ArtigoMoeda.Artigo"
 <table>
   <tr><td>Web Service</td><td>WS07</td></tr>
   <tr><td>Description</td><td>Gets a list of books ordered by existing stock, except books with no stock</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>V_001</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -293,7 +287,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual
 <table>
   <tr><td>Web Service</td><td>WS08</td></tr>
   <tr><td>Description</td><td>Gets a list of books ordered by the last date they were updated (first is the most recent)</td></tr>
-  <tr><td>Related Core Views</td><td>Splash page</td></tr>
+  <tr><td>Related Core Views</td><td>V_008</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -350,7 +344,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table>
   <tr><td>Web Service</td><td>WS09</td></tr>
   <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
-  <tr><td>Related Core Views</td><td>Splash page</td></tr>
+  <tr><td>Related Core Views</td><td>V_007</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
 >>>>>>> a0710b8823c09bd9ed86a80acfaa76a3d1ad5202
   <tr><td>Input example</td><td>
@@ -380,7 +374,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table>
   <tr><td>Web Service</td><td>WS10</td></tr>
   <tr><td>Description</td><td>Makes a purchase of the specified items, producing an ECL document</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>V_007</td></tr>
   <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
   <tr><td>Input example</td><td>
 <pre>
@@ -409,7 +403,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table>
   <tr><td>Web Service</td><td>WS11</td></tr>
   <tr><td>Description</td><td>Gets the specified document</td></tr>
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Related Core Views</td><td>V_005, V_006</td></tr>
   <tr><td>Route</td><td>Vendas/Docs/Edita/000/{type}/{entity_type}/{id}</td></tr>
   <tr><td>Input example</td><td>
   type = FAR
