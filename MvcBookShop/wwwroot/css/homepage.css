@@ -1,0 +1,14 @@
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+div#demo.carousel.slide{
+    padding-bottom: 2.5%;
+}
+
+div#title_homepage.row{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 42px;
+    padding-bottom: 1%;
+}

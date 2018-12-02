@@ -3,48 +3,132 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MvcBookShop</title>
+    
+    <title>
+        @ViewData["Title"] - BookShop
+    </title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+                    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+                    crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/navbar.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link rel="stylesheet" href="~/css/homepage.css" />
     </environment>
+
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+    </script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+    </script>
 </head>
+
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MvcBookShop</a>
+    <nav>
+        <nav id="navbarHeader" class="navbar navbar-light bg-light rounded-0">
+            <div class="col-sm-4">
+                <a class="navbar-brand" href="#">
+                    <img id="logoHeader" src="./images/Logo_marcaAgua.png" class="d-inline-block align-top" alt="logo">
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
+
+            <div class="col-sm-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Recipient's username" 
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                   
+                    <div class="input-group-append">
+                        <button class="btn btn-default" type="button">
+                            Search
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="col-sm-4">
+                <!-- Login/Register -->
+            </div>
+        </nav>
+
+        <nav id="subNavbar" class="navbar navbar-dark rounded-0">
+            <!-- Navbar content -->
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Romance
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Fiction
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Thriller
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Literature
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Classics
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Poetry
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Poetry
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </nav>
 
+    <!--
     <partial name="_CookieConsentPartial" />
+    -->
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - MvcBookShop</p>
+            <p>&copy; 2018 - BookShop</p>
         </footer>
     </div>
 

@@ -1,0 +1,19 @@
+nav#navbarHeader.navbar.navbar-light.bg-light.rounded-0{
+    color: #334e67;
+    background-color: #334e67 !important;
+    margin-bottom: 0px;
+}
+
+a.navbar-brand{
+    display: table;
+}
+
+img#logoHeader.d-inline-block.align-top{
+    height: auto;
+    width: 38%;
+}
+
+nav#subNavbar.navbar.navbar-dark.rounded-0{
+    background-color: #6d73a3;
+    margin-bottom: 0px;
+}

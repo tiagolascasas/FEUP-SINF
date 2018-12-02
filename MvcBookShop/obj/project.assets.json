@@ -11794,23 +11794,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/nadiacarvalho/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\bmsp2\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/MvcBookShop.csproj",
+      "projectUniqueName": "C:\\Users\\bmsp2\\Documents\\GitHub\\SINF\\MvcBookShop\\MvcBookShop.csproj",
       "projectName": "MvcBookShop",
-      "projectPath": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/MvcBookShop.csproj",
-      "packagesPath": "/Users/nadiacarvalho/.nuget/packages/",
-      "outputPath": "/Users/nadiacarvalho/Documents/Github/SINF/MvcBookShop/obj/",
+      "projectPath": "C:\\Users\\bmsp2\\Documents\\GitHub\\SINF\\MvcBookShop\\MvcBookShop.csproj",
+      "packagesPath": "C:\\Users\\bmsp2\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bmsp2\\Documents\\GitHub\\SINF\\MvcBookShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/nadiacarvalho/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\bmsp2\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
