@@ -350,10 +350,6 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table>
   <tr><td>Web Service</td><td>WS09</td></tr>
   <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
-<<<<<<< HEAD
-  <tr><td>Related Core Views</td><td>Book page</td></tr>
-  <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
-=======
   <tr><td>Related Core Views</td><td>Splash page</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
 >>>>>>> a0710b8823c09bd9ed86a80acfaa76a3d1ad5202
@@ -383,7 +379,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 
 <table>
   <tr><td>Web Service</td><td>WS10</td></tr>
-  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
+  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an ECL document</td></tr>
   <tr><td>Related Core Views</td><td>Book page</td></tr>
   <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
   <tr><td>Input example</td><td>
