@@ -1,6 +1,6 @@
 # Primavera API for the Online BookShop Web App
 
-<table>
+<table style="width: 100%;">
 <tr>
   <th>Webservice ID</th><th>Webservice Description</th><th>Related Core View(s)</th><th>Input example</th><th>Expected Output</th>
 </tr>
