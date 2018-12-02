@@ -222,19 +222,39 @@
 				},
 				{
 					"name": "WS02 - Get customer information",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
-								"exec": [
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Base/Clientes/Edita/TIAGO",
+							"host": [
+								"{{apiUrl}}Base"
+							],
+							"path": [
+								"Clientes",
+								"Edita",
+								"TIAGO"
+							]
 						}
-					],
+					},
+					"response": []
+				},
+				{
+					"name": "WS03 - Update customer attributes",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -250,323 +270,25 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
 								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"Select Cliente, Nome, Fac_Mor, Fac_Local, Fac_Tel, NumContrib, CDU_email, CDU_password_hash from Clientes where Cliente = 'TIAGO'\""
+							"raw": "{\n    \"CodigoTabLog\": \"Cliente\",\n    \"ChaveLog\": \"Cliente\",\n    \"EstadoBE\": \"\",\n    \"Cliente\": \"TIAGO\",\n    \"Nome\": \"Tiago Santos\",\n    \"Descricao\": \"\",\n    \"Morada\": \"Rua Eng. Farinas de Almeida, 313, 4º esq\",\n    \"Morada2\": \"\",\n    \"Localidade\": \"\",\n    \"CodigoPostal\": \"4510-260\",\n    \"LocalidadeCodigoPostal\": \"\",\n    \"Telefone\": \"961843943\",\n    \"Telefone2\": \"\",\n    \"Fax\": \"\",\n    \"EnderecoWeb\": \"\",\n    \"Distrito\": \"\",\n    \"GestaoDiasPag\": false,\n    \"DiaPagamento1\": 0,\n    \"DiaPagamento2\": 0,\n    \"DiaPagamento3\": 0,\n    \"NumDiasRetrocesso\": 0,\n    \"DiaInicialPerNaoPag1\": \"\",\n    \"DiaFinalPerNaoPag1\": \"\",\n    \"DiaInicialPerNaoPag2\": \"\",\n    \"DiaFinalPerNaoPag2\": \"\",\n    \"DebitoContaCorrente\": 0,\n    \"DebitoVendasNaoConvertidas\": 0,\n    \"DebitoEncomendasPendentes\": 0,\n    \"TipoCredito\": \"\",\n    \"LimiteCredIdade\": false,\n    \"LimiteCredValor\": false,\n    \"LimiteIdadeSaldo\": 0,\n    \"LimiteValorSaldo\": 0,\n    \"Limitecredito\": 0,\n    \"Desconto\": 0,\n    \"LinhaPrecos\": \"0\",\n    \"Observacoes\": \"\",\n    \"NumContribuinte\": \"64287048860\",\n    \"Pais\": \"PT\",\n    \"TipoMercado\": \"0\",\n    \"ExcluirAvisosVencimento\": false,\n    \"ModoPag\": \"\",\n    \"ModoRec\": \"\",\n    \"CondPag\": \"\",\n    \"Moeda\": \"EUR\",\n    \"ModoExp\": \"\",\n    \"Vendedor\": \"\",\n    \"Zona\": \"\",\n    \"NumViasDoc\": 0,\n    \"ExcluirRecapitulativos\": false,\n    \"DataCriacao\": \"1899-12-30T00:00:00\",\n    \"RubricaPagamentos\": \"\",\n    \"RubricaRecebimentos\": \"\",\n    \"TipoTerceiro\": \"\",\n    \"SegmentoTerceiro\": \"\",\n    \"RegimeIvaReembolsos\": 0,\n    \"Factoring\": false,\n    \"Inactivo\": false,\n    \"ProcessaIntrastat\": false,\n    \"IntrastatPorto\": \"\",\n    \"SuporteAvisosVencimento\": \"\",\n    \"DataUltimaActualizacao\": \"2018-12-01T20:43:16\",\n    \"DescricaoComercial\": \"\",\n    \"Caracteristicas\": \"\",\n    \"Idioma\": \"\",\n    \"UtilizaIdioma\": false,\n    \"EfectuaRetencao\": false,\n    \"EfectuaOutrasRetencoes\": false,\n    \"SujeitoRecargo\": false,\n    \"ExcluirAlertasCob\": false,\n    \"AlertaValorSaldoCob\": false,\n    \"ValorSaldoCob\": 0,\n    \"AlertaIdadeSaldoCob\": false,\n    \"IdadeSaldoCob\": 0,\n    \"IdContactoCob\": \"\",\n    \"CalendarioCob\": \"\",\n    \"IdGDOC\": \"\",\n    \"LocalOperacao\": \"\",\n    \"DebitoLetrasNovas\": false,\n    \"DebitoLetrasReformadas\": false,\n    \"CondDebitoLetrasParticular\": false,\n    \"JuroLetras\": 0,\n    \"JuroLetrasPostecipado\": false,\n    \"ComissaoLetras\": 0,\n    \"ComissaoLetrasPercent\": false,\n    \"PortesLetras\": 0,\n    \"CondDebitoLetrasReformadasParticular\": false,\n    \"JuroLetrasReformadas\": 0,\n    \"JuroLetrasReformadasPostecipado\": false,\n    \"ComissaoLetrasReformadas\": 0,\n    \"ComissaoLetrasReformadasPercent\": false,\n    \"PortesLetrasReformadas\": 0,\n    \"PessoaSingular\": false,\n    \"Toc\": 0,\n    \"FuncionarioResp\": \"\",\n    \"FuncionarioTOC\": \"\",\n    \"Delegacao\": \"\",\n    \"CentroOperacional\": \"\",\n    \"Situacao\": \"\",\n    \"Equipa\": \"\",\n    \"CodPriempre\": \"\",\n    \"NomeFiscal\": \"Tiago Santos\",\n    \"B2BTrataTrans\": false,\n    \"B2BUtilArtigosParceiro\": false,\n    \"B2BEnvioNaGravacao\": false,\n    \"B2BEnderecoMail\": \"\",\n    \"B2BCertificado\": \"\",\n    \"IdB2BFormato\": \"\",\n    \"B2BEnderecoEnvio\": \"\",\n    \"B2BDocDownload\": false,\n    \"B2BArtigosParceiro\": \"\",\n    \"B2BUtilUnidadesParceiro\": false,\n    \"B2BUnidadesParceiro\": \"\",\n    \"B2BIgnoraEnvioParceiro\": false,\n    \"B2BEnvioParceiro\": \"\",\n    \"B2BIgnoraTransaccoes\": false,\n    \"B2BTransaccoes\": \"\",\n    \"CodigoGLN\": \"\",\n    \"EncargosBanco\": false,\n    \"EncargosBancos\": [],\n    \"CodigoIEC\": \"\",\n    \"CodigoIsencaoIEC\": \"\",\n    \"IsentoIEC\": false,\n    \"CambioADataDoc\": false,\n    \"EmModoEdicao\": true,\n    \"CamposUtil\": [\n        {\n            \"Conteudo\": \"ValorValor\",\n            \"Nome\": \"CDU_CampoVar1\",\n            \"Valor\": null,\n            \"Objecto\": null,\n            \"Tipo\": 1,\n            \"ChaveLog\": \"Nome\",\n            \"EstadoBE\": \"\",\n            \"TipoSimplificado\": 1\n        },\n        {\n            \"Conteudo\": \"ValorValor\",\n            \"Nome\": \"CDU_CampoVar2\",\n            \"Valor\": null,\n            \"Objecto\": null,\n            \"Tipo\": 1,\n            \"ChaveLog\": \"Nome\",\n            \"EstadoBE\": \"\",\n            \"TipoSimplificado\": 1\n        },\n        {\n            \"Conteudo\": \"ValorValor\",\n            \"Nome\": \"CDU_CampoVar3\",\n            \"Valor\": null,\n            \"Objecto\": null,\n            \"Tipo\": 1,\n            \"ChaveLog\": \"Nome\",\n            \"EstadoBE\": \"\",\n            \"TipoSimplificado\": 1\n        },\n        {\n            \"Conteudo\": \"ValorValoremailxyx@gmail.com\",\n            \"Nome\": \"CDU_email\",\n            \"Valor\": \"emailxyz@gmail.com\",\n            \"Objecto\": null,\n            \"Tipo\": 1,\n            \"ChaveLog\": \"Nome\",\n            \"EstadoBE\": \"\",\n            \"TipoSimplificado\": 1\n        },\n        {\n            \"Conteudo\": \"ValorValor03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4\",\n            \"Nome\": \"CDU_password_hash\",\n            \"Valor\": \"03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4\",\n            \"Objecto\": null,\n            \"Tipo\": 1,\n            \"ChaveLog\": \"Nome\",\n            \"EstadoBE\": \"\",\n            \"TipoSimplificado\": 1\n        }\n    ],\n    \"Conteudo\": \"ClienteTIAGONomeTiago SantosNomeFiscalTiago SantosDescricaoMoradaRua Eng. Farinas de Almeida, 313, 4º esqMorada2LocalidadeCodigoPostal4510-260LocalidadeCodigoPostalTelefone961843943Telefone2FaxEnderecoWebDistritoLinhaPrecos0UtilizaIdiomaFalseIdiomaEfectuaRetencaoFalseEfectuaOutrasRetencoesFalseSujeitoRecargoFalseLimiteCredValorFalseLimiteCredIdadeFalseLimiteIdadeSaldo0LimiteValorSaldo0LimiteCredito0ExcluirAlertasCobFalseAlertaValorSaldoCobFalseValorSaldoCob0AlertaIdadeSaldoCobFalseIdadeSaldoCob0CalendarioCobIdContactoCobTipoCreditoIdGDOCObservacoesNumContribuinte64287048860ContribuinteNaoResidentePaisPTTipoMercado0ModoPagModoRecCondPagMoedaEURModoExpVendedorZonaRubricaPagamentosRubricaRecebimentosTipoTerceiroIntrastatPortoSuporteAvisosVencimentoSegmentoTerceiroDataCriacao30-12-1899 00:00:00DataUltimaActualizacao01-12-2018 20:43:16Desconto0DebitoContaCorrente0ExcluirAvisosVencimentoFalseNumViasDoc0ExcluirRecapitulativosFalseInactivoFalseVendasNaoConvertidas0DebitoEncomendasPendentes0ProcessaIntrastatFalseLocalOperacaoToc0FuncionarioRespFuncionarioTOCDelegacaoCentroOperacionalSituacaoEquipaCodPRIEMPREIdB2BFormatoB2BEnderecoMailB2BEnderecoEnvioB2BEnvioNaGravacaoFalseB2BTrataTransFalseB2BCertificadoB2BDocDownloadFalseB2BUtilArtigosParceiroFalseB2BArtigosParceiroB2BUtilUnidadesParceiroFalseB2BUnidadesParceiroB2BIgnoraEnvioParceiroFalseB2BEnvioParceiroB2BIgnoraTransaccoesFalseB2BTransaccoesCodigoIECCodigoIsencaoIECIsentoIECFalseCodigoGLNGestaoDiasPagFalseDiaPagamento10DiaPagamento20DiaPagamento30NumDiasRetrocesso0DiaInicialPerNaoPag1DataFinalPerNaoPag1DiaInicialPerNaoPag2DiaFinalPerNaoPag2EncargosBancoFalseRegimeIvaReembolsos0FactoringFalseCambioADataDocFalseFacturacaoAgrupadaBillingFalseActividadeEmpresarialFalseAutoFacturacaoFalseTrataIvaCaixaFalseeGAR_CodigoAPAeGAR_IsentaFalseeGAR_NumPGLeGAR_TipoProdutorTipoRemetenteTipoRemetenteEntidadeParceira\",\n    \"ContribuinteNaoResidente\": \"\",\n    \"IntegraCessaoFactoring\": false,\n    \"ActividadeEmpresarial\": false,\n    \"eGAR_Isenta\": false,\n    \"eGAR_CodigoAPA\": \"\",\n    \"eGAR_NumPGL\": \"\",\n    \"eGAR_TipoProdutor\": \"\",\n    \"TipoRemetente\": \"\",\n    \"CodigoLocal\": \"\",\n    \"Locked\": false,\n    \"AutoFacturacao\": false,\n    \"TrataIvaCaixa\": false,\n    \"FacturacaoAgrupadaBilling\": false,\n    \"ShareBI\": {\n        \"Conteudo\": \"VersaoCloud0ActualizacaoCloudActualizacaoERP\",\n        \"EstadoBE\": \"\",\n        \"ChaveLog\": \"\",\n        \"CodigoTabLog\": \"\",\n        \"PropExcluirLog\": \"\",\n        \"VersaoCloud\": 0,\n        \"ActualizacaoCloud\": \"\",\n        \"ActualizacaoERP\": \"\",\n        \"AbvtApl\": \"BAS\"\n    },\n    \"EntidadeParceira\": \"\",\n    \"AbvtApl\": \"BAS\"\n}"
 						},
 						"url": {
-							"raw": "{{apiUrl}}Administrador/Consulta",
+							"raw": "{{apiUrl}}Base/Clientes/Actualiza",
 							"host": [
-								"{{apiUrl}}Administrador"
+								"{{apiUrl}}Base"
 							],
 							"path": [
-								"Consulta"
+								"Clientes",
+								"Actualiza"
 							]
-						},
-						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
+						}
 					},
-					"response": [
-						{
-							"name": "Second Token",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/x-www-form-urlencoded"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "username",
-											"value": "{{username}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{password}}",
-											"type": "text"
-										},
-										{
-											"key": "company",
-											"value": "{{company}}",
-											"type": "text"
-										},
-										{
-											"key": "instance",
-											"value": "{{instance}}",
-											"type": "text"
-										},
-										{
-											"key": "grant_type",
-											"value": "{{grandType}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{apiUrl}}token",
-									"host": [
-										"{{apiUrl}}token"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "*",
-									"name": "Access-Control-Allow-Headers",
-									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "*",
-									"name": "Access-Control-Allow-Methods",
-									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*",
-									"name": "Access-Control-Allow-Origin",
-									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache",
-									"name": "Cache-Control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-								},
-								{
-									"key": "Content-Length",
-									"value": "379",
-									"name": "Content-Length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=UTF-8",
-									"name": "Content-Type",
-									"description": "The mime type of this content"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
-									"name": "Date",
-									"description": "The date and time that the message was sent"
-								},
-								{
-									"key": "Expires",
-									"value": "-1",
-									"name": "Expires",
-									"description": "Gives the date/time after which the response is considered stale"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache",
-									"name": "Pragma",
-									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0",
-									"name": "Server",
-									"description": "A name for the server"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET",
-									"name": "X-Powered-By",
-									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-								}
-							],
-							"cookie": [],
-							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
-						}
-					]
-				},
-				{
-					"name": "WS03 - Update customer",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c91f8512-7f14-4f22-ac29-dd88013d7e3a",
-								"exec": [
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{secondToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\"Update Clientes set CDU_password = 'adasdasd' where Cliente = 'TIAGO'\""
-						},
-						"url": {
-							"raw": "{{apiUrl}}Administrador/Consulta",
-							"host": [
-								"{{apiUrl}}Administrador"
-							],
-							"path": [
-								"Consulta"
-							]
-						},
-						"description": "In this token is necessary to pass the username, password and company, to have full access to Api capability"
-					},
-					"response": [
-						{
-							"name": "Second Token",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/x-www-form-urlencoded"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "username",
-											"value": "{{username}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{password}}",
-											"type": "text"
-										},
-										{
-											"key": "company",
-											"value": "{{company}}",
-											"type": "text"
-										},
-										{
-											"key": "instance",
-											"value": "{{instance}}",
-											"type": "text"
-										},
-										{
-											"key": "grant_type",
-											"value": "{{grandType}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{apiUrl}}token",
-									"host": [
-										"{{apiUrl}}token"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "*",
-									"name": "Access-Control-Allow-Headers",
-									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "*",
-									"name": "Access-Control-Allow-Methods",
-									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*",
-									"name": "Access-Control-Allow-Origin",
-									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache",
-									"name": "Cache-Control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-								},
-								{
-									"key": "Content-Length",
-									"value": "379",
-									"name": "Content-Length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=UTF-8",
-									"name": "Content-Type",
-									"description": "The mime type of this content"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 14 Sep 2018 11:21:09 GMT",
-									"name": "Date",
-									"description": "The date and time that the message was sent"
-								},
-								{
-									"key": "Expires",
-									"value": "-1",
-									"name": "Expires",
-									"description": "Gives the date/time after which the response is considered stale"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache",
-									"name": "Pragma",
-									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0",
-									"name": "Server",
-									"description": "A name for the server"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET",
-									"name": "X-Powered-By",
-									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-								}
-							],
-							"cookie": [],
-							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "WS04 - Get book information",
@@ -605,7 +327,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"Select Descricao, CDU_Autor, CDU_Sinopse, CDU_ISBN, CDU_Editora, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, Familia, CDU_Idioma from Artigo where Artigo = 'B0001'\""
+							"raw": "\"Select Descricao, CDU_Autor, CDU_Sinopse, CDU_ISBN, CDU_Editora, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, Familia, CDU_Idioma, PVP1 from Artigo, ArtigoMoeda where Artigo.Artigo = 'B0001' and Artigo.Artigo = ArtigoMoeda.Artigo\""
 						},
 						"url": {
 							"raw": "{{apiUrl}}Administrador/Consulta",
@@ -779,7 +501,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"Select Artigo, Descricao, CDU_Autor from Artigo where Familia = 'IT'\""
+							"raw": "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor from Artigo, ArtigoMoeda where Familia = 'IT' and Artigo.Artigo = ArtigoMoeda.Artigo\""
 						},
 						"url": {
 							"raw": "{{apiUrl}}Administrador/Consulta",
@@ -953,7 +675,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"Select Descricao, CDU_Autor from Artigo where Descricao like '%Intro%'\""
+							"raw": "\"Select Artigo.Artigo, Descricao, CDU_Autor, PVP1 from Artigo, ArtigoMoeda where Descricao like '%Intro%' and Artigo.Artigo = ArtigoMoeda.Artigo\""
 						},
 						"url": {
 							"raw": "{{apiUrl}}Administrador/Consulta",
@@ -1089,6 +811,43 @@
 							"body": "{\"access_token\":\"UB2_ffiXrE22mWGEAM5azRs5ca0pKH0B8-veDaMzy4UA6CcsPTSqAvdKnS4DQQEKQZtQCijPhgiZqG2iz2bf2izjha7T1Zsn-rhyzXl4E_I-_S0A3BUn8K-yB-urgl1nDybTmt7SxF4hE0YoT-NtyTn5sozVaJjGSG0gHBgarDaycg2hkPrn6tpxZ1ODBlfpOG_K55YBuu04vlheEqarqX6vq2wibYN8nUpo4DiRlxkled86JNWK6fssCxPmD2MeY8XiCe2ARxbG6qyHdpTP4YDtvYbObN54KKGn-MCSU60gOGS86rNuJbc2AshO-E2k\",\"token_type\":\"bearer\",\"expires_in\":1199}"
 						}
 					]
+				},
+				{
+					"name": "WS07 - Purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Linhas\": [\r\n    {\r\n      \"Artigo\": \"B0001\",\r\n      \"Quantidade\": \"1\"\r\n    },\r\n    {\r\n      \"Artigo\": \"B0002\",\r\n      \"Quantidade\": \"1\"\r\n    }\r\n  ],\r\n  \"Tipodoc\": \"ECL\",\r\n  \"Serie\": \"A\",\r\n  \"Entidade\": \"C0001\",\r\n  \"TipoEntidade\": \"C\",\r\n  \"DataDoc\":\"12/11/2018\",\r\n  \"DataVenc\":\"12/12/2018\"\r\n}"
+						},
+						"url": {
+							"raw": "{{apiUrl}}Compras/Docs/CreateDocument",
+							"host": [
+								"{{apiUrl}}Compras"
+							],
+							"path": [
+								"Docs",
+								"CreateDocument"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2063,14 +1822,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{apiUrl}}Base/Clientes/Edita/qwerty",
+							"raw": "{{apiUrl}}Base/Clientes/Edita/TIAGO",
 							"host": [
 								"{{apiUrl}}Base"
 							],
 							"path": [
 								"Clientes",
 								"Edita",
-								"qwerty"
+								"TIAGO"
 							]
 						}
 					},
@@ -3071,7 +2830,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Linhas\": [\r\n    {\r\n      \"Artigo\": \"A0001\",\r\n      \"Quantidade\": \"1\"\r\n    },\r\n    {\r\n      \"Artigo\": \"A0002\",\r\n      \"Quantidade\": \"1\"\r\n    }\r\n  ],\r\n  \"Tipodoc\": \"ECF\",\r\n  \"Serie\": \"A\",\r\n  \"Entidade\": \"FVD\",\r\n  \"TipoEntidade\": \"F\",\r\n  \"DataDoc\":\"12/11/2018\",\r\n  \"DataVenc\":\"12/12/2018\"\r\n}"
+							"raw": "{\r\n  \"Linhas\": [\r\n    {\r\n      \"Artigo\": \"B0001\",\r\n      \"Quantidade\": \"1\"\r\n    },\r\n    {\r\n      \"Artigo\": \"B0002\",\r\n      \"Quantidade\": \"1\"\r\n    }\r\n  ],\r\n  \"Tipodoc\": \"ECL\",\r\n  \"Serie\": \"A\",\r\n  \"Entidade\": \"TIAGO\",\r\n  \"TipoEntidade\": \"C\",\r\n  \"DataDoc\":\"12/11/2018\",\r\n  \"DataVenc\":\"12/12/2018\"\r\n}"
 						},
 						"url": {
 							"raw": "{{apiUrl}}Compras/Docs/CreateDocument",
