@@ -1161,7 +1161,7 @@
 					]
 				},
 				{
-					"name": "WS09 - Purchase",
+					"name": "WS09 - Place an order",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1185,13 +1185,86 @@
 							"raw": "{\r\n  \"Linhas\": [\r\n    {\r\n      \"Artigo\": \"B0001\",\r\n      \"Quantidade\": \"1\"\r\n    },\r\n    {\r\n      \"Artigo\": \"B0002\",\r\n      \"Quantidade\": \"1\"\r\n    }\r\n  ],\r\n  \"Tipodoc\": \"ECL\",\r\n  \"Serie\": \"A\",\r\n  \"Entidade\": \"C0001\",\r\n  \"TipoEntidade\": \"C\",\r\n  \"DataDoc\":\"12/11/2018\",\r\n  \"DataVenc\":\"12/12/2018\"\r\n}"
 						},
 						"url": {
-							"raw": "{{apiUrl}}Compras/Docs/CreateDocument",
+							"raw": "{{apiUrl}}Vendas/Docs/CreateDocument",
 							"host": [
-								"{{apiUrl}}Compras"
+								"{{apiUrl}}Vendas"
 							],
 							"path": [
 								"Docs",
 								"CreateDocument"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WS10 - Purchase an item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Linhas\": [\r\n    {\r\n      \"Artigo\": \"B0001\",\r\n      \"Quantidade\": \"1\"\r\n    },\r\n    {\r\n      \"Artigo\": \"B0002\",\r\n      \"Quantidade\": \"1\"\r\n    }\r\n  ],\r\n  \"Tipodoc\": \"FAR\",\r\n  \"Serie\": \"A\",\r\n  \"Entidade\": \"C0001\",\r\n  \"TipoEntidade\": \"C\",\r\n  \"DataDoc\":\"12/11/2018\",\r\n  \"DataVenc\":\"12/12/2018\"\r\n}"
+						},
+						"url": {
+							"raw": "{{apiUrl}}Vendas/Docs/CreateDocument",
+							"host": [
+								"{{apiUrl}}Vendas"
+							],
+							"path": [
+								"Docs",
+								"CreateDocument"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WS11 - Get document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{apiUrl}}Vendas/Docs/Edita/000/ECL/A/12",
+							"host": [
+								"{{apiUrl}}Vendas"
+							],
+							"path": [
+								"Docs",
+								"Edita",
+								"000",
+								"ECL",
+								"A",
+								"12"
 							]
 						}
 					},

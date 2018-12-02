@@ -348,10 +348,10 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 </table>
 
 <table>
-  <tr><td>Web Service</td><td>WS08</td></tr>
+  <tr><td>Web Service</td><td>WS09</td></tr>
   <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
   <tr><td>Related Core Views</td><td>Book page</td></tr>
-  <tr><td>Route</td><td>Administrador/Consulta</td></tr>
+  <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
   <tr><td>Input example</td><td>
 <pre>
 {
@@ -374,4 +374,131 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 }
 </pre></td></tr>
   <tr><td>Expected Output</td><td>true</td></tr>
+</table>
+
+<table>
+  <tr><td>Web Service</td><td>WS10</td></tr>
+  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
+  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
+  <tr><td>Input example</td><td>
+<pre>
+{
+  "Linhas": [
+    {
+      "Artigo": "B0001",
+      "Quantidade": "1"
+    },
+    {
+      "Artigo": "B0002",
+      "Quantidade": "1"
+    }
+  ],
+  "Tipodoc": "ECL",
+  "Serie": "A",
+  "Entidade": "C0001",
+  "TipoEntidade": "C",
+  "DataDoc":"12/11/2018",
+  "DataVenc":"12/12/2018"
+}
+</pre></td></tr>
+  <tr><td>Expected Output</td><td>true</td></tr>
+</table>
+
+<table>
+  <tr><td>Web Service</td><td>WS11</td></tr>
+  <tr><td>Description</td><td>Gets the specified document</td></tr>
+  <tr><td>Related Core Views</td><td>Book page</td></tr>
+  <tr><td>Route</td><td>Vendas/Docs/Edita/000/{type}/{entity_type}/{id}</td></tr>
+  <tr><td>Input example</td><td>
+  type = FAR
+  entity_type = A
+  id = 1
+  (parâmetros da rota)
+</td></tr>
+  <tr><td>Expected Output</td><td>
+<pre>
+{
+    "IDDiarioCaixa": "",
+    "OrigemPOS": false,
+    (...)
+    "PropExcluirLog": "",
+    "Linhas": [
+        {
+            "ChaveLog": "Artigo,Armazem,Lote,TipoLinha",
+            "EstadoBE": "",
+            (...)
+            "IntrastatValorLiq": 0,
+            "NumLinDocOriginal": 0,
+            "CamposUtil": [
+                {
+                    "Conteudo": "ValorValor",
+                    "Nome": "CDU_LinVar1",
+                    (...)
+                    "EstadoBE": "",
+                    "TipoSimplificado": 1
+                },
+                (...)
+            ],
+            (...)
+            "BaseIncidencia": 0,
+            "RegraCalculoIncidencia": 0,
+            "DadosAdiantamento": {
+                "Conteudo": "DifArredondamentoMAlt0DifArredondamentoMBase0DifCambioMAlt0DifCambioMBase0",
+                "MoedaDocOrig": "",
+                (...)
+            },
+            "DadosImpostoSelo": {
+                "Ano": 0,
+                "Selo": "",
+                (...)
+            },
+            "ValorLiquidoDesconto": 0,
+            "IvaValorDesconto": 0,
+            (...)
+            "ValorProcessoAnosSeguintes": 0,
+            "AbvtApl": "VND"
+        }
+    ],
+    "Retencoes": [],
+    "ResumoIva": [
+        {
+            "ChaveLog": "Filial,Serie,Tipodoc,NumDoc,CodIva",
+            "EstadoBE": "",
+            (...)
+            "ValorDesconto": 0,
+            "AbvtApl": "BAS"
+        }
+    ],
+    "ID": "8cf01dd8-f667-11e8-b6a5-08002756714a",
+    "IDCabecMovCbl": "a5f9744c-f667-11e8-b6a5-08002756714a",
+    (...)
+    "ValorEntregueCambio": 0,
+    "EmModoEdicao": true,
+    "CamposUtil": [
+        {
+            "Conteudo": "ValorValor",
+            "Nome": "CDU_CabVar1",
+            (...)
+            "EstadoBE": "",
+            "TipoSimplificado": 1
+        },
+        (...)
+    ],
+    (...)
+    "ContratoFactoring": "",
+    "ATDocCodeID": "",
+    "CargaDescarga": {
+        (...)
+        "ATDocCodeID": "",
+        "AbvtApl": "BAS"
+    },
+    "EntidadeDescarga": "C0001",
+    "LocalDescarga": "V/ Morada",
+    (...)
+    "HoraDefinida": false,
+    "AbvtApl": "VND"
+}
+</pre>
+  </td></tr>
 </table>
