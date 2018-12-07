@@ -1,0 +1,12 @@
+.DS_Store
+obj/
+bin/
+.vs
+.vscode
+obj/Debug
+obj/Debug/netcoreapp2.1/MvcBookShop.Views.dll
+obj/Debug/netcoreapp2.1/MvcBookShop.assets.cache
+obj/MvcBookShop.csproj.nuget.cache
+obj/MvcBookShop.csproj.nuget.g.props
+obj/MvcBookShop.csproj.nuget.g.targets
+obj/project.assets.json
