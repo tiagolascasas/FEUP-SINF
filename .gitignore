@@ -2,3 +2,10 @@
 MvcBookShop/obj/
 MvcBookShop/bin/
 MvcBookShop/.vscode
+MvcBookShop/obj/Debug
+MvcBookShop/obj/Debug/netcoreapp2.1/MvcBookShop.Views.dll
+MvcBookShop/obj/Debug/netcoreapp2.1/MvcBookShop.assets.cache
+MvcBookShop/obj/MvcBookShop.csproj.nuget.cache
+MvcBookShop/obj/MvcBookShop.csproj.nuget.g.props
+MvcBookShop/obj/MvcBookShop.csproj.nuget.g.targets
+MvcBookShop/obj/project.assets.json

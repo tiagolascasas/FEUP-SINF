@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MvcBookShop.PrimaveraWebServices;
 
 namespace MvcBookShop
 {
@@ -14,6 +16,9 @@ namespace MvcBookShop
     {
         public static void Main(string[] args)
         {
+            Thread tokenRequester = new Thread(TokenRequesterThread.DoWork);
+            tokenRequester.Start();
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
