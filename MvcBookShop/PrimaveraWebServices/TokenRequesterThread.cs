@@ -19,15 +19,13 @@ namespace MvcBookShop.PrimaveraWebServices
 
         private static void requestFirstToken()
         {
-            WS_TokenWithoutCompany request = new WS_TokenWithoutCompany();
-            string res = request.Send();
+            string res = WebServicesManager.Instance.WS_TokenWithoutCompany();
             WebServicesManager.Instance.FirstToken = res;
         }
 
         private static void requestSecondToken()
         {
-            WS_TokenRequest request = new WS_TokenRequest();
-            string res = request.Send();
+            string res = WebServicesManager.Instance.WS_TokenRequest();
             WebServicesManager.Instance.SecondToken = res;
         }
     }
