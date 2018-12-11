@@ -157,7 +157,7 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("Postman-Token", "27416828-1a92-4ea2-9cc8-b4b8c62b38b4");
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Content-Type", "application/json");
-            string sql = string.Format("Select Descricao, CDU_Autor, CDU_Sinopse, CDU_ISBN, CDU_Editora, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, Familia, CDU_Idioma, PVP1 from Artigo, ArtigoMoeda where Artigo.Artigo = '{0}' and Artigo.Artigo = ArtigoMoeda.Artigo", Artigo);
+            string sql = string.Format("\"Select Descricao, CDU_Autor, CDU_Sinopse, CDU_ISBN, CDU_Editora, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, Familia, CDU_Idioma, PVP1 from Artigo, ArtigoMoeda where Artigo.Artigo = '{0}' and Artigo.Artigo = ArtigoMoeda.Artigo\"", Artigo);
             Console.Write(sql);
             request.AddParameter("undefined", sql, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
@@ -175,39 +175,154 @@ namespace MvcBookShop.PrimaveraWebServices
                 return null;
         }
 
-        public string WS05_GetSetOfBooksInCategory(string Categoria)
+        public dynamic WS05_GetSetOfBooksInCategory(string Categoria)
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "6d49e4f9-f603-4583-bfeb-d75f47f8fcab");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            string sql = string.Format("\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor from Artigo, ArtigoMoeda where Familia = '{0}' and Artigo.Artigo = ArtigoMoeda.Artigo\"", Categoria);
+            request.AddParameter("undefined", sql, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
-        public string WS06_SearchByTitle(string Titulo)
+        public dynamic WS06_SearchByTitle(string Titulo)
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "2c465850-c3f3-4853-adce-e1abc62d5959");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            string sql = string.Format("\"Select Artigo.Artigo, Descricao, CDU_Autor, PVP1 from Artigo, ArtigoMoeda where Descricao like '%{0}%' and Artigo.Artigo = ArtigoMoeda.Artigo\"", Titulo);
+            request.AddParameter("undefined", sql, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
-        public string WS07_GetSetOfBooksOrderedByStock()
+        public dynamic WS07_GetSetOfBooksOrderedByStock()
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "e0a43d1a-b683-4224-b212-022e7b33a849");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual\"", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
-        public string WS08_GetSetOfBooksOrderedByRelease()
+        public dynamic WS08_GetSetOfBooksOrderedByRelease()
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "4538e85d-c884-4bd3-9bd7-527b3eab6cd1");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, DataUltimaActualizacao from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc\"", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
-        public bool WS09_PlaceOrder(string document)
+        public bool WS09_PlaceOrder(string Document)
         {
-            return true;
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Vendas/Docs/CreateDocument");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "34ce0281-6761-4329-949e-0027f77b0527");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", Document, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write("Status code: " + response.StatusCode);
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public bool WS10_PurchaseItem(string document)
+        public bool WS10_PurchaseItem(string Document)
         {
-            return true;
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Vendas/Docs/CreateDocument");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "34ce0281-6761-4329-949e-0027f77b0527");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", Document, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write("Status code: " + response.StatusCode);
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public string WS11_GetDocument(int id)
+        public dynamic WS11_GetDocument(int Id)
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Vendas/Docs/Edita/000/ECL/A/" + Id);
+            var request = new RestRequest(Method.GET);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "f8e89300-5bf7-49dd-a660-d3a223910186");
+            request.AddHeader("cache-control", "no-cache");
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
     }
 }
