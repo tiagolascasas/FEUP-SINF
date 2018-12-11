@@ -17,7 +17,7 @@ namespace MvcBookShop.PrimaveraWebServices
                 Thread.Sleep(6000);
                 //test calls here
                 //bool res = WebServicesManager.Instance.WS01_CreateCustomer("{\n    \"Cliente\": \"TIAGO13\",\n    \"Nome\": \"Tiago Santos\",\n    \"Morada\": \"Rua Eng. Farinas de Almeida, 313, 4º esq\",\n    \"CodigoPostal\": \"4510-260\",\n    \"Telefone\": \"961843943\",\n    \"NumContribuinte\": \"64287048860\",\n    \"Pais\": \"PT\",\n    \"Moeda\": \"EUR\"\n}");
-
+                WebServicesManager.Instance.WS02_GetCustomerInformation("TIAGO");
                 Thread.Sleep(1000 * 1000);
             }
         }

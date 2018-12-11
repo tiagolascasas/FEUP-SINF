@@ -114,13 +114,24 @@ namespace MvcBookShop.PrimaveraWebServices
             return response.StatusCode == HttpStatusCode.NoContent;
         }
 
-        public string WS02_GetCustomerInformation(string Cliente)
+        public JObject WS02_GetCustomerInformation(string Cliente)
         {
-            string route = WebServicesManager.Instance.ApiUrl + "Base/Clientes/Edita/" + Cliente;
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Base/Clientes/Edita/" + Cliente);
+            var request = new RestRequest(Method.GET);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "dc08a379-325d-4ae6-95a0-b96e7e6645ce");
+            request.AddHeader("cache-control", "no-cache");
+            IRestResponse response = client.Execute(request);
 
-
-
-            return "";
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
         public bool WS03_UpdateCustomerAttributes(string json)
