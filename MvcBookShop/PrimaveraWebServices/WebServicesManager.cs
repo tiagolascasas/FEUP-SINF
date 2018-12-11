@@ -151,7 +151,28 @@ namespace MvcBookShop.PrimaveraWebServices
 
         public string WS04_GetBookInformation(string Artigo)
         {
-            return "";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "27416828-1a92-4ea2-9cc8-b4b8c62b38b4");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            string sql = string.Format("Select Descricao, CDU_Autor, CDU_Sinopse, CDU_ISBN, CDU_Editora, CDU_Capa, CDU_Paginas, CDU_Ano, CDU_Dimensoes, Familia, CDU_Idioma, PVP1 from Artigo, ArtigoMoeda where Artigo.Artigo = '{0}' and Artigo.Artigo = ArtigoMoeda.Artigo", Artigo);
+            Console.Write(sql);
+            request.AddParameter("undefined", sql, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write(response.Content);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
         }
 
         public string WS05_GetSetOfBooksInCategory(string Categoria)
