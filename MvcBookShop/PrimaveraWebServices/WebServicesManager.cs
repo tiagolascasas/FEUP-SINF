@@ -1,5 +1,9 @@
 using Newtonsoft.Json.Linq;
+using RestSharp;
+using RestSharp.Deserializers;
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 
 namespace MvcBookShop.PrimaveraWebServices
@@ -49,56 +53,65 @@ namespace MvcBookShop.PrimaveraWebServices
 
         public string WS_TokenWithoutCompany()
         {
-            string route = WebServicesManager.Instance.ApiUrl + "token";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "token");
 
-            var body = new Dictionary<string, string>
+            client.ClearHandlers();
+            var jsonDeserializer = new JsonDeserializer();
+            client.AddHandler("application/json", jsonDeserializer);
+
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Postman-Token", "ea40762a-c25a-4cec-b2ae-1474376fc6ee");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("undefined", "username=FEUP&password=qualquer1&instance=Default&grant_type=password", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                { "username", WebServicesManager.Instance.Username },
-                { "password", WebServicesManager.Instance.Password },
-                { "instance", WebServicesManager.Instance.InstanceAPI },
-                { "grant_type", WebServicesManager.Instance.GrandType }
-            };
-
-            HttpContent content = new FormUrlEncodedContent(body);
-
-            HttpResponseMessage response = WebServicesManager.Client.PostAsync(route, content).Result;
-
-            string res = response.Content.ReadAsStringAsync().Result;
-
-            dynamic parsed = JObject.Parse(res);
-            string token = parsed.access_token;
-
-            return token;
+                string rawResponse = response.Content;
+                dynamic data = JObject.Parse(rawResponse);
+                Console.WriteLine("Second token: " + data.access_token);
+                return data.access_token;
+            }
+            else
+                return "FAIL";
         }
 
         public string WS_TokenRequest()
         {
-            string route = WebServicesManager.Instance.ApiUrl + "token";
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "token");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "2207eb42-0c9d-4489-85d2-ff8093a9684a");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("undefined", "username=FEUP&password=qualquer1&company=BOOKSHOP&instance=Default&grant_type=password&line=professional", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
 
-            var body = new Dictionary<string, string>
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                { "username", WebServicesManager.Instance.Username },
-                { "password", WebServicesManager.Instance.Password },
-                { "instance", WebServicesManager.Instance.InstanceAPI },
-                { "grant_type", WebServicesManager.Instance.GrandType },
-                { "line", WebServicesManager.Instance.Line }
-            };
-
-            HttpContent content = new FormUrlEncodedContent(body);
-
-            HttpResponseMessage response = WebServicesManager.Client.PostAsync(route, content).Result;
-
-            string res = response.Content.ReadAsStringAsync().Result;
-
-            dynamic parsed = JObject.Parse(res);
-            string token = parsed.access_token;
-
-            return token;
+                string rawResponse = response.Content;
+                dynamic data = JObject.Parse(rawResponse);
+                Console.WriteLine("First token: " + data.access_token);
+                return data.access_token;
+            }
+            else
+                return "FAIL";
         }
 
         public bool WS01_CreateCustomer(string json)
         {
-            return true;
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Base/Clientes/Actualiza");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "33c5105d-98c5-470b-a853-d23f4a7661da");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", json, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write("Status code: " + response.StatusCode);
+            return response.StatusCode == HttpStatusCode.NoContent;
         }
 
         public string WS02_GetCustomerInformation(string Cliente)
@@ -155,3 +168,4 @@ namespace MvcBookShop.PrimaveraWebServices
             return "";
         }
     }
+}
