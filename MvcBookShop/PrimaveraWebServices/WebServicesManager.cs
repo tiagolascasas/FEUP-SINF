@@ -136,7 +136,17 @@ namespace MvcBookShop.PrimaveraWebServices
 
         public bool WS03_UpdateCustomerAttributes(string json)
         {
-            return true;
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Base/Clientes/Actualiza");
+            var request = new RestRequest(Method.POST);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("Postman-Token", "435849cc-205b-4522-8cd4-68a6bf9980fe");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", json, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.Write("Status code: " + response.StatusCode);
+            return response.StatusCode == HttpStatusCode.NoContent;
         }
 
         public string WS04_GetBookInformation(string Artigo)
