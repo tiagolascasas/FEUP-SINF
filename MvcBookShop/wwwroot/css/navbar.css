@@ -21,6 +21,8 @@ nav#subNavbar.navbar.navbar-dark.rounded-0{
 div#loginRegister.col-sm-4{
     color: white;
     text-align: -webkit-right;
+    display: flex;
+    padding-left: 25%;
 }
 
 div.modal-header{
