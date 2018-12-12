@@ -22,3 +22,17 @@ div#loginRegister.col-sm-4{
     color: white;
     text-align: -webkit-right;
 }
+
+div.modal-header{
+    background-color: #334e67 !important; 
+}
+
+p#p_login_modal{
+    color: black;
+    text-align: left;
+}
+
+div div div button.btn.btn-primary{
+    background-color: green;
+    border-bottom-color: green;
+}
