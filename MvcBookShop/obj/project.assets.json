@@ -11820,6 +11820,10 @@
   "packageFolders": {
     "C:\\Users\\bmsp2\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+=======
+    "/Users/beatrizdehenriquesmartins/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+>>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
@@ -11831,7 +11835,7 @@
       "outputPath": "C:\\Users\\bmsp2\\Documents\\GitHub\\SINF\\MvcBookShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\bmsp2\\AppData\\Roaming\\NuGet\\NuGet.Config"
