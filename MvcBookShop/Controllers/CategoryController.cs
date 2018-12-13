@@ -14,12 +14,13 @@ namespace MvcBookShop.Controllers{
         public IActionResult Index(){
             return View();
         }
-        public IActionResult Romance() {
-            dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory("Romance");
+        public IActionResult getCategoryPage(String cat) {
+            
+            //dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory("Romance");
 
-            ViewData["Books"] = books.DataSet.Table;
+            //ViewData["Books"] = books.DataSet.Table;
 
-            return View();
+            return Index();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

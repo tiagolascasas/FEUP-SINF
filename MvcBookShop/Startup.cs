@@ -48,6 +48,7 @@ namespace MvcBookShop
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -57,6 +58,11 @@ namespace MvcBookShop
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "getCategoryPage",
+                    template: "category/{cat:String}",
+                    defaults: new {controller="Category", action="getCategoryPage"});
             });
         }
     }
