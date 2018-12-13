@@ -38,3 +38,17 @@ div div div button.btn.btn-primary{
     background-color: green;
     border-bottom-color: green;
 }
+
+@media only screen and (max-width: 600px) {
+    nav#navbarHeader.navbar.navbar-light.bg-light.rounded-0 div.col-sm-4 a.navbar-brand{
+        text-align: center;
+    }
+
+    nav#navbarHeader.navbar.navbar-light.bg-light.rounded-0 div.col-sm-4 div.input-group.mb-3 input.form-control{
+        width: 85%;
+    }
+
+    nav#navbarHeader.navbar.navbar-light.bg-light.rounded-0 div#loginRegister.col-sm-4{
+        padding-left: 38%;
+    }
+}
