@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Book page";
+    MvcBookShop.Models.Book book = (MvcBookShop.Models.Book) ViewData["Book"];  
 }
 
 <style>
@@ -38,13 +39,13 @@
         <div class="row">
             <div class="col-sm-8" style="padding-left: 0px;">
                 <h1>
-                    Sem Segredos!
+                    @book.Title
                 </h1>
             </div>
 
             <div class="col-sm-4">
                 <h1 id="priceBookPage">
-                    14,99€
+                    @book.Price €
                 </h1>
             </div>
         </div>
@@ -52,17 +53,17 @@
         <div class="row">
             <div class="col-sm-8" style="padding-left: 0px;">
                 <h3>
-                    de Marco Costa
+                    by @book.Author
                 </h3>
             </div>
 
             <div class="col-sm-4">
-                <button type="button" class="btn btn-success">
+                <a href="@Url.Action("Index", "Cart", new { id = @book.ID })" type="button" class="btn btn-success">
                     <i class="fas fa-shopping-cart">
                     </i>
-                    
+
                     Add cart
-                </button>
+                </a>
             </div>
         </div>
 
@@ -72,27 +73,7 @@
             </h2>
 
             <p id="resume">
-                Depois do sucesso de Receitas com Segredo - atualmente com 14 edições -; de uma
-                rubrica televisiva, Tortas e Travessas, ao lado de Fátima Lopes, no programa A 
-                Tarde é Sua, que conquistou o seu lugar nas preferências das audiências; e dos 
-                incontáveis pedidos do seu crescente e exigente número de fãs para que publicasse 
-                mais receitas, surge agora Sem Segredos!, o novo livro de receitas de Marco Costa, 
-                o pasteleiro mais famoso da televisão portuguesa. 
-                
-                Tal como as do livro anteriores, são receitas caseiras, genuínas, com o toque pessoal 
-                do autor, que exalam carinho e felicidade. São bolos, tartes, bolachas, brigadeiros, 
-                queijadas e muitos outros doces, para comer e chorar por mais! Dos Brigadeiros de Coco 
-                à Tarte de Limão Merengada, passando pelos famosos Ovos de Chocolate e o Bolo-Rei de 
-                Nutella, não há como não cair em tentação. 
-                
-                Mas há igualmente espaço para doces em versão mais saudável como o Bolo de Chocolate 
-                sem Farinha, os Brownies Saudáveis ou os Queques Saudáveis. E o Marco dá igualmente 
-                ideias para comemorarmos os dias que nos são mais queridos, seja o Dia dos Namorados, 
-                do Pai, da Mãe, o Natal, entre outros, ou até mesmo os mais divertidos, como o Carnaval 
-                e o Halloween. Deitem mãos à obra, experimentem fazer as receitas, provem, lambuzem-se, 
-                dêem a provar e sejam felizes! 
-                
-                Se gostaram do Receitas com Segredo vão adorar este Sem Segredos!
+                @book.Sinopse
             </p>
         </div>
 
@@ -105,31 +86,31 @@
         <div class="row">
             <ul>
                 <li>
-                    ISBN:
+                    ISBN: @book.ISBN
                 </li>
 
                 <li>
-                    Year of edition:
+                    Year of edition: @book.PublishYear
                 </li>
 
                 <li>
-                    Editor:
+                    Editor: @book.Editor
                 </li>
 
                 <li>
-                    Language:
+                    Language: @book.Language
                 </li>
 
                 <li>
-                    Dimension:
+                    Dimension: @book.Dimensions
                 </li>
 
                 <li>
-                    Binding:
+                    Binding: @book.Cover
                 </li>
 
                 <li>
-                    Number of pages:
+                    Number of pages: @book.Pages
                 </li>
             </ul>
         </div>

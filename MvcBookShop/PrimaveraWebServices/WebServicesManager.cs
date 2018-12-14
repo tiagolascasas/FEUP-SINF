@@ -114,7 +114,7 @@ namespace MvcBookShop.PrimaveraWebServices
             return response.StatusCode == HttpStatusCode.NoContent;
         }
 
-        public JObject WS02_GetCustomerInformation(string Cliente)
+        public dynamic WS02_GetCustomerInformation(string Cliente)
         {
             var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Base/Clientes/Edita/" + Cliente);
             var request = new RestRequest(Method.GET);
@@ -149,7 +149,7 @@ namespace MvcBookShop.PrimaveraWebServices
             return response.StatusCode == HttpStatusCode.NoContent;
         }
 
-        public string WS04_GetBookInformation(string Artigo)
+        public dynamic WS04_GetBookInformation(string Artigo)
         {
             var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Administrador/Consulta");
             var request = new RestRequest(Method.POST);

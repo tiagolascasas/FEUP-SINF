@@ -26,7 +26,7 @@ namespace MvcBookShop.Controllers{
             var bookList = new List<Book>{};
             foreach (dynamic x in books.DataSet.Table)
             {
-                bookList.Add(new Book(){ Artigo = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor});  
+                bookList.Add(new Book(){ ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = x.CDU_Capa});  
             }
 
             ViewData["Books"] = bookList;
