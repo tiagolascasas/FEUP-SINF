@@ -38,11 +38,13 @@ namespace MvcBookShop.Controllers{
                 });  
             }
 
-            ViewData["Title"] = bookList.First().Title;
+            if(bookList.Count > 0){
+                ViewData["Title"] = bookList.First().Title;
+                ViewData["Book"] = bookList.First();
+                return View();
+            }
 
-            ViewData["Book"] = bookList.First();
-
-            return View();
+                return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

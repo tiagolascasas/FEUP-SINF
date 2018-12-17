@@ -174,39 +174,27 @@
             <!-- Navbar content -->
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" href="Category?category=Romance">
-                        Romance
-                    </a>
+                    @Html.ActionLink("Romance", "Index", "Category", new { category="Romance", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link" href="Category?category=Fiction">
-                        Fiction
-                    </a>
+                    @Html.ActionLink("Fiction", "Index", "Category", new { category="Fiction", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link" href="Category?category=Thriller">
-                        Thriller
-                    </a>
+                    @Html.ActionLink("Thriller", "Index", "Category", new { category="Thriller", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Category?category=Literature">
-                        Literature
-                    </a>
+                    @Html.ActionLink("Literature", "Index", "Category", new { category="Literature", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Category?category=Classics">
-                        Classics
-                    </a>
+                    @Html.ActionLink("Classics", "Index", "Category", new { category="Classics", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Category?category=Poetry">
-                        Poetry
-                    </a>
+                    @Html.ActionLink("Poetry", "Index", "Category", new { category="Poetry", Area = "" }, htmlAttributes: new { @class="nav-link" })
                 </li>
 
                 <li>
