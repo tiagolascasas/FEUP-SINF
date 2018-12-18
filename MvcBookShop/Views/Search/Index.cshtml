@@ -5,6 +5,7 @@
 <h1> Your search results for "@ViewData["SearchTerm"]" </h1>
 <div class="container">
     <div class="row">
+        @ViewData["Error"]
         @foreach (var book in ViewData["Books"] as IList<Book>)
         {
             <div class="book-card col-sm-2">

@@ -30,7 +30,7 @@ namespace MvcBookShop.PrimaveraWebServices
             do
             {
                 Console.Write("Requesting first token...\n");
-                res = WebServicesManager.Instance.WS_TokenRequest();
+                res = WebServicesManager.Instance.WS_TokenWithoutCompany();
             } while (res == null || res == "FAIL");
 
             WebServicesManager.Instance.FirstToken = res;
@@ -42,8 +42,9 @@ namespace MvcBookShop.PrimaveraWebServices
             do
             {
                 Console.Write("Requesting second token...\n");
-                res = WebServicesManager.Instance.WS_TokenWithoutCompany();
+                res = WebServicesManager.Instance.WS_TokenRequest();
             } while (res == null || res == "FAIL");
+
             WebServicesManager.Instance.SecondToken = res;
 
             TokenRequesterThread.canRequestFirst = true;

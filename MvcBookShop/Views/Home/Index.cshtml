@@ -52,15 +52,15 @@
             </div>
 
             <div class="row">
-                @{@ViewData["PopularError"]
-                }
+                @ViewData["PopularError"]
+                
 
                 @foreach (var book in ViewData["PopularBooks"] as IList<Book>)
                 {
                     <div class="col-sm-2">
                         <center>
                             <a href="BookPage?id=@book.ID">
-                                <img src="@book.Cover" alt="book">
+                                <img src="@book.Cover" class="img-thumbnail" alt="book">
                             </a>
                         </center>
 
@@ -79,7 +79,7 @@
                 }
             </div>
         </div>
-
+        
         <div>
             <div id="title_homepage" class="row">
                 <h2>
@@ -88,15 +88,15 @@
             </div>
 
             <div class="row">
-                @{@ViewData["RecentError"]
-                }
+                @ViewData["RecentError"]
+                
 
                 @foreach (var book in ViewData["RecentBooks"] as IList<Book>)
                 {
                     <div class="col-sm-2">
                         <center>
                             <a href="BookPage?id=@book.ID">
-                                <img src="@book.Cover" alt="book">
+                                <img src="@book.Cover" class="img-thumbnail" alt="book">
                             </a>
                         </center>
 

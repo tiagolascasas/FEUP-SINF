@@ -24,14 +24,20 @@ namespace MvcBookShop.Controllers{
             try {
 
                 dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory(category);
-                Console.Write(books);
+                
                 int retries = 0;
                 if (books == null && retries < 3)
                 {
                     System.Threading.Thread.Sleep(1000);
                     retries++;
+                    books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory(category);
                 }
 
+                if (books == null)
+                {
+                    ViewData["Books"] = new List<Book> { };
+                    ViewData["Error"] = "There was an error retrieving the books of this category";
+                }
 
                 var bookList = new List<Book>{};
                 foreach (dynamic x in books.DataSet.Table)
@@ -40,6 +46,7 @@ namespace MvcBookShop.Controllers{
                 }
 
                 ViewData["Books"] = bookList;
+                ViewData["Error"] = "";
 
             } catch(Exception e) {
                 Console.WriteLine("{0} Exception caught.", e);

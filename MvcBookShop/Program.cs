@@ -20,8 +20,8 @@ namespace MvcBookShop
             tokenRequester.Start();
 
             while (!TokenRequesterThread.okToStart) { }
-            Console.Write("Tokens ok, starting in 1 second...");
-            System.Threading.Thread.Sleep(1000);
+            Console.Write("Tokens ok, starting in 3 seconds...");
+            System.Threading.Thread.Sleep(3000);
 
             CreateWebHostBuilder(args).Build().Run();
         }

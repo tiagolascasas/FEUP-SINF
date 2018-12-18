@@ -11,9 +11,8 @@ namespace MvcBookShop.Controllers{
 
     public class HomeController : Controller{
         
-        public IActionResult Index(){
-            //ViewData["CategoryTitle"] = category;
-
+        public IActionResult Index()
+        {
             try
             {
                 dynamic books = WebServicesManager.Instance.WS08_GetSetOfBooksOrderedByRelease();
@@ -24,9 +23,10 @@ namespace MvcBookShop.Controllers{
 
                     foreach (dynamic x in books.DataSet.Table)
                     {
-                        bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
+                        if (bookList.Count < 6)
+                            bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
                     }
-                    ViewData["RecentBooks"] = bookList.Take(6);
+                    ViewData["RecentBooks"] = bookList;
                     ViewData["RecentError"] = "";
                 }
                 else
@@ -40,7 +40,7 @@ namespace MvcBookShop.Controllers{
             {
                 Console.WriteLine("{0} Exception caught.", e);
             }
-
+            
             try
             {
                 dynamic books = WebServicesManager.Instance.WS07_GetSetOfBooksOrderedByStock();
@@ -48,12 +48,14 @@ namespace MvcBookShop.Controllers{
                 if (books != null)
                 {
                     var bookList = new List<Book> { };
-
+                    
                     foreach (dynamic x in books.DataSet.Table)
                     {
-                        bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
+                        if (bookList.Count < 6)
+                            bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
                     }
-                    ViewData["PopularBooks"] = bookList.Take(6);
+
+                    ViewData["PopularBooks"] = bookList;
                     ViewData["PopularError"] = "";
                 }
                 else

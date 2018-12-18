@@ -29,6 +29,20 @@ namespace MvcBookShop.Controllers
 
                 dynamic books = WebServicesManager.Instance.WS06_SearchByTitle(term);
 
+                int retries = 0;
+                if (books == null && retries < 3)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    retries++;
+                    books = WebServicesManager.Instance.WS06_SearchByTitle(term);
+                }
+
+                if (books == null)
+                {
+                    ViewData["Books"] = new List<Book> { };
+                    ViewData["Error"] = "There was an error searching for the books";
+                }
+
                 var bookList = new List<Book> { };
                 foreach (dynamic x in books.DataSet.Table)
                 {
@@ -36,6 +50,7 @@ namespace MvcBookShop.Controllers
                 }
 
                 ViewData["Books"] = bookList;
+                ViewData["Error"] = "";
 
             }
             catch (Exception e)
