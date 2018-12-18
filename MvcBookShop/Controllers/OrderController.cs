@@ -2,15 +2,60 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
+using MvcBookShop.PrimaveraWebServices;
 
 namespace MvcBookShop.Controllers{
 
     public class OrderController : Controller{
         
-        public IActionResult Index(){
+        public IActionResult Index(int number){
+            Console.WriteLine("\n\n\n\n");
+
+
+            try {
+                dynamic ECL = WebServicesManager.Instance.WS11_GetDocument(number);
+                dynamic total=0;
+
+                List<string[]> artigosList = new List<string[]>{};
+                foreach (dynamic x in ECL.Linhas)
+                {
+                    String []artigos = new String[5];
+                    artigos[0]=(string)x.Artigo;
+                    artigos[1]=(string)x.Descricao;
+                    artigos[2]=(string)x.Quantidade;
+                    dynamic semIVA=x.PrecUnit-x.TotalIva;
+                    artigos[3]=(string)semIVA;
+                    artigos[4]=(string)x.PrecUnit;
+                    total+= ((float)x.PrecUnit*100);
+                    artigosList.Add(artigos);
+                }
+                ViewData["Artigos"] = artigosList;
+                ViewData["Total"] = ((float)total/100.0).ToString("0.00");
+                ViewData["Entidade"] =(string)ECL.Entidade;
+                ViewData["Pais"]=(string)ECL.Pais;
+                ViewData["Nome"]=(string)ECL.Nome;
+                ViewData["Morada"]=(string)ECL.Morada;
+                ViewData["CodigoPostal"]=(string)ECL.CodigoPostal;
+                ViewData["NumContribuinte"]=(string)ECL.NumContribuinte;
+                ViewData["Estado"]="";
+                if((string)ECL.Estado=="P")
+                    ViewData["Estado"]="Approved / pending";
+                else if((string)ECL.Estado=="T")
+                    ViewData["Estado"]="In transportation / Received";
+    
+                
+                ViewData["ID"]=number;
+                //Console.WriteLine(ECL);
+            }catch(Exception e) {
+                Console.WriteLine("{0} Exception caught.", e);
+            }
+
+            Console.WriteLine(number);
+            Console.WriteLine("\n\n\n\n");
             return View();
         }
 

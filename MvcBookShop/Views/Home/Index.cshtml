@@ -52,113 +52,31 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
+                @{@ViewData["PopularError"]
+                }
 
-                    <p id="bookName">
+                @foreach (var book in ViewData["PopularBooks"] as IList<Book>)
+                {
+                    <div class="col-sm-2">
                         <center>
-                            Sem Segredos!
+                            <a href="BookPage?id=@book.ID">
+                                <img src="@book.Cover" alt="book">
+                            </a>
                         </center>
-                    </p>
 
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
+                        <p id="bookName">
+                            <center>
+                                @book.Title
+                            </center>
+                        </p>
 
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
+                        <p>
+                            <center>
+                                @book.Price
+                            </center>
+                        </p>
+                    </div>
+                }
             </div>
         </div>
 
@@ -170,113 +88,31 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
+                @{@ViewData["RecentError"]
+                }
 
-                    <p id="bookName">
+                @foreach (var book in ViewData["RecentBooks"] as IList<Book>)
+                {
+                    <div class="col-sm-2">
                         <center>
-                            Sem Segredos!
+                            <a href="BookPage?id=@book.ID">
+                                <img src="@book.Cover" alt="book">
+                            </a>
                         </center>
-                    </p>
 
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
+                        <p id="bookName">
+                            <center>
+                                @book.Title
+                            </center>
+                        </p>
 
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
-
-                <div class="col-sm-2">
-                    <center>
-                        <img src="./images/150x.jpeg" alt="book">
-                    </center>
-
-                    <p id="bookName">
-                        <center>
-                            Sem Segredos!
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            14,99€
-                        </center>
-                    </p>
-                </div>
+                        <p>
+                            <center>
+                                @book.Price
+                            </center>
+                        </p>
+                    </div>
+                }
             </div>
         </div>
     </div>

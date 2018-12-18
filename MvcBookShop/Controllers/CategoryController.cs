@@ -24,6 +24,14 @@ namespace MvcBookShop.Controllers{
             try {
 
                 dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory(category);
+                Console.Write(books);
+                int retries = 0;
+                if (books == null && retries < 3)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    retries++;
+                }
+
 
                 var bookList = new List<Book>{};
                 foreach (dynamic x in books.DataSet.Table)
