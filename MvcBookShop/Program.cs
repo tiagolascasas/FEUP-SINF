@@ -19,6 +19,10 @@ namespace MvcBookShop
             Thread tokenRequester = new Thread(TokenRequesterThread.DoWork);
             tokenRequester.Start();
 
+            while (!TokenRequesterThread.okToStart) { }
+            Console.Write("Tokens ok, starting in 1 second...");
+            System.Threading.Thread.Sleep(1000);
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
