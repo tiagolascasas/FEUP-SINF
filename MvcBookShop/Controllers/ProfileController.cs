@@ -5,12 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
+using MvcBookShop.PrimaveraWebServices;
 
 namespace MvcBookShop.Controllers{
 
     public class ProfileController : Controller{
         
-        public IActionResult Index(){
+        public IActionResult Index(string id){
+            ViewData["id"] = id;
+
+            try
+            {
+
+                dynamic json = WebServicesManager.Instance.WS02_GetCustomerInformation(id);
+                
+                ViewData["Nome"] = json.Nome;
+                ViewData["Morada"] = json.Morada;
+                ViewData["CodigoPostal"] = json.CodigoPostal;
+                ViewData["NIF"] = json.NumContribuinte;
+                ViewData["Telefone"] = json.Telefone;
+                ViewData["Email"] = json.CamposUtil[3].Valor;
+                ViewData["Image"] = "./images/clients/" + id + ".jpg";
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+            }
+
             return View();
         }
 
