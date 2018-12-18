@@ -326,5 +326,27 @@ namespace MvcBookShop.PrimaveraWebServices
             else
                 return null;
         }
+
+        public dynamic WS12_ListSeries()
+        {
+            var client = new RestClient(WebServicesManager.Instance.ApiUrl + "Base/Series/ListaSeries/V/ECL/false");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Postman-Token", "5e1795e5-d3d0-422c-8718-b47eeb5386ae");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
+            request.AddHeader("cache-control", "no-cache");
+            IRestResponse response = client.Execute(request);
+
+            Console.Write("WS12 returned with " + response.Content + "\n");
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string rawResponse = response.Content;
+                Console.Write(rawResponse);
+                dynamic data = JObject.Parse(rawResponse);
+                return data;
+            }
+            else
+                return null;
+        }
     }
 }
