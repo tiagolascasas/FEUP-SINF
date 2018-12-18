@@ -41,7 +41,13 @@ namespace MvcBookShop.Controllers{
                 ViewData["Morada"]=(string)ECL.Morada;
                 ViewData["CodigoPostal"]=(string)ECL.CodigoPostal;
                 ViewData["NumContribuinte"]=(string)ECL.NumContribuinte;
-                ViewData["Estado"]=(string)ECL.Estado;
+                ViewData["Estado"]="";
+                if((string)ECL.Estado=="P")
+                    ViewData["Estado"]="Approved / pending";
+                else if((string)ECL.Estado=="T")
+                    ViewData["Estado"]="In transportation / Received";
+    
+                
                 ViewData["ID"]=number;
                 //Console.WriteLine(ECL);
             }catch(Exception e) {
