@@ -1,93 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Search Results";
+    ViewData["Title"] = "Search results";
 }
 
+<h1> Your search results for "@ViewData["SearchTerm"]" </h1>
 <div class="container">
-    <h1> Search results for "Cooking" </h1>
-    <div class="container">
-        <div class="row">
+    <div class="row">
+        @foreach (var book in ViewData["Books"] as IList<Book>)
+        {
             <div class="book-card col-sm-2">
                 <div class="card book-card">
                     <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
+                        <a href="BookPage?id=@book.ID">
+                            <img src="@book.Cover" alt="" class="product-pic">
+                        </a>
+                        <p> @book.Title </p>
+                        <p> @book.Price € </p>
                     </div>
                 </div>
             </div>
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="book-card col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card book-card">
-                    <div class="card-body border-0">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                            <p class="book-name">Sem segredos! de Marco Costa</p>
-                            <p>28.64€</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
+
+    @if ((ViewData["Books"] as IList<Book>) != null && (ViewData["Books"] as IList<Book>).Count > 18)
+    {
+        <nav class="page-selector" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link page-arrow" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">...</li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                <li class="page-item">
+                    <a class="page-link page-arrow" href="#" aria-label="Next">
+                        <span aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+
 </div>
