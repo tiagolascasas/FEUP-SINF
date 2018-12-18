@@ -13,13 +13,13 @@
                             <div class="form-group row">
                                 <label for="name" class="font-weight-bold col-sm-4 col-form-label">Name</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="name" value="Briggite Jolicoeur">
+                                    <input readonly type="text" class="form-control-plaintext" id="name" value="@ViewData["Nome"]">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="address" class="font-weight-bold col-sm-4 col-form-label">Address</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="address" value="5, Place Charles de Gaulle">
+                                    <input readonly type="text" class="form-control-plaintext" id="address" value="@ViewData["Morada"]">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -27,31 +27,31 @@
                                     code</label>
                                 <div class="col-md-8">
                                     <input readonly type="text" class="form-control-plaintext" id="postalCode"
-                                        value="59473 VILLENEUVE-D'ASCQ">
+                                        value="@ViewData["CodigoPostal"]">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="NIF" class="font-weight-bold col-sm-4 col-form-label">NIF</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="NIF" value="2830740203324 91">
+                                    <input readonly type="text" class="form-control-plaintext" id="NIF" value="@ViewData["NIF"]">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="phone" class="font-weight-bold col-sm-4 col-form-label">Phone</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="phone" value="+33 03 54 75 92 54">
+                                    <input readonly type="text" class="form-control-plaintext" id="phone" value=@ViewData["Telefone"]>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email" class="font-weight-bold col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="email" value="BrigitteJolicoeur@armyspy.com">
+                                    <input readonly type="text" class="form-control-plaintext" id="email" value=@ViewData["Email"]>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="user" class="font-weight-bold col-sm-4 col-form-label">User</label>
+                                <label for="user" class="font-weight-bold col-sm-4 col-form-label">User code</label>
                                 <div class="col-sm-8">
-                                    <input readonly type="text" class="form-control-plaintext" id="user" value="+33 03 54 75 92 54">
+                                    <input readonly type="text" class="form-control-plaintext" id="user" value=@ViewData["id"]>
                                 </div>
                             </div>
                         </form>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="col-sm-6 profilepage-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvzOpl3-kqfNbPcA_u_qEZcSuvu5Je4Ce_FkTMMjxhB-J1wWin-Q" alt="" id="profile-pic">
+                    <img src=@ViewData["Image"] alt="" id="profile-pic">
                 </div>
         </div>
     </div>
