@@ -9,8 +9,8 @@
             <div class="book-card col-sm-2">
                 <div class="card book-card">
                     <div class="card-body border-0">
-                        <a href="@Url.Action("Index", "BookPage", new { id = @book.ID })"> <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic"> </a>
+                        <a href="BookPage?id=@book.ID"> 
+                            <img src="@book.Cover" alt="" class="product-pic"> </a>
                             <p> @book.Title </p>
                             <p> @book.Price € </p>
                     </div>

@@ -21,17 +21,24 @@ namespace MvcBookShop.Controllers{
 
             ViewData["CategoryTitle"] = category;
 
-            dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory(category);
+            try {
 
-            var bookList = new List<Book>{};
-            foreach (dynamic x in books.DataSet.Table)
-            {
-                bookList.Add(new Book(){ ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = x.CDU_Capa});  
+                dynamic books = WebServicesManager.Instance.WS05_GetSetOfBooksInCategory(category);
+
+                var bookList = new List<Book>{};
+                foreach (dynamic x in books.DataSet.Table)
+                {
+                    bookList.Add(new Book(){ ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg"});  
+                }
+
+                ViewData["Books"] = bookList;
+
+            } catch(Exception e) {
+                Console.WriteLine("{0} Exception caught.", e);
             }
 
-            ViewData["Books"] = bookList;
-
             return View(); 
+            
         }
 
 

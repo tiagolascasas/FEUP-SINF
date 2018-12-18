@@ -29,12 +29,13 @@ namespace MvcBookShop.Controllers{
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,
                     Editor = x.CDU_Editora,
-                    Cover = x.CDU_Capa,
+                    Binding = x.CDU_Capa,
                     Pages = x.CDU_Paginas,
                     PublishYear = x.CDU_Ano,
                     Dimensions = x.CDU_Dimensoes,
                     Category = x.Familia,
                     Language = x.CDU_Idioma,
+                    Cover = @"./images/books/" + id + ".jpg"      
                 });  
             }
 
