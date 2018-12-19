@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
@@ -31,6 +32,12 @@ namespace MvcBookShop.Controllers
                 ViewData["Error"] = "There are no books on cart. Add one!";
             }
 
+            ViewData["Nome"] = HttpContext.Session.GetString("Nome");
+            ViewData["Morada"] = HttpContext.Session.GetString("Morada");
+            ViewData["CodigoPostal"] = HttpContext.Session.GetString("CodigoPostal");
+            ViewData["NIF"] = HttpContext.Session.GetString("NIF");
+            ViewData["Telefone"] = HttpContext.Session.GetString("Telefone");
+
             return View();
         }
 
@@ -46,12 +53,13 @@ namespace MvcBookShop.Controllers
 
             foreach (dynamic x in book.DataSet.Table)
             {
-                Book bookToAdd = new Book()
-                {
+                decimal PriceWoIVA = decimal.Round(x.PVP1 * 0.94, 2, MidpointRounding.AwayFromZero);
+
+                Book bookToAdd = new Book() {
                     ID = id,
                     Title = x.Descricao,
                     Price = x.PVP1,
-                    PriceWoIVA = x.PVP1 * 0.94,
+                    PriceWoIVA = PriceWoIVA,
                     Author = x.CDU_Autor,
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,
@@ -66,8 +74,12 @@ namespace MvcBookShop.Controllers
                 };
 
                 var itemDuplicated = booksOnCart.SingleOrDefault(r => r.ID == id);
-                if(itemDuplicated == null)
+                if(itemDuplicated == null){
+                    bookToAdd.QuantityOnCart = 1;
                     booksOnCart.Add(bookToAdd);
+                } else
+                    bookToAdd.QuantityOnCart++;
+                    
             }
 
             HttpContext.Session.SetObjectAsJson("booksOnCart", booksOnCart);

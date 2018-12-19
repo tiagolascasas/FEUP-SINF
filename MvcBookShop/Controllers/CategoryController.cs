@@ -11,8 +11,6 @@ using System.Text.Encodings.Web;
 using Newtonsoft.Json.Linq;
 
 
-
-
 namespace MvcBookShop.Controllers{
 
     public class CategoryController : Controller{

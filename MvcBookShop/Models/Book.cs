@@ -20,5 +20,6 @@ namespace MvcBookShop.Models
         public string Category { get; set; }
         public string Language { get; set; }
         public string Cover { get; set; }
+        public int QuantityOnCart { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
@@ -16,7 +17,6 @@ namespace MvcBookShop.Controllers{
 
             try
             {
-
                 dynamic json = WebServicesManager.Instance.WS02_GetCustomerInformation(id);
                 
                 ViewData["Nome"] = json.Nome;
@@ -27,6 +27,16 @@ namespace MvcBookShop.Controllers{
                 ViewData["Email"] = json.CamposUtil[3].Valor;
                 ViewData["Image"] = "./images/clients/" + id + ".jpg";
 
+                string postalCode = Convert.ToString(json.CodigoPostal);
+                string nIF = Convert.ToString(json.NumContribuinte);
+                string phone = Convert.ToString(json.Telefone);
+
+
+                HttpContext.Session.SetString("Nome", (string) json.Nome);
+                HttpContext.Session.SetString("Morada", (string) json.Morada);
+                HttpContext.Session.SetString("CodigoPostal",postalCode);
+                HttpContext.Session.SetString("NIF", nIF);
+                HttpContext.Session.SetString("Telefone",phone);
             }
             catch (Exception e)
             {
