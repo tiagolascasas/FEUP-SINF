@@ -69,7 +69,8 @@
                 </div>
             </div>
             @foreach(var artigo in artigos){
-            <div class="card-body">
+                 var link="/BookPage?id=" + artigo[0];
+            <a class="card-body badge-light" href=@link>
                 <div class="row">
                     <div class="col-md-2">
                         @{var cover="/images/books/" + artigo[0] + ".jpg";}
@@ -89,7 +90,7 @@
                         @artigo[4]
                     </div>
                 </div>
-            </div>
+            </a>
             }
         </div>
         <div class="row">
