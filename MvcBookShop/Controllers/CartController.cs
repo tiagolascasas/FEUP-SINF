@@ -1,39 +1,57 @@
 ﻿using System;
-using Microsoft.AspNetCore.Http;
 using System.Data;
+using System.Text.Encodings.Web;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MvcBookShop.Models;
-using MvcBookShop.PrimaveraWebServices;
-using System.Text.Encodings.Web;
 using Newtonsoft.Json.Linq;
 
-namespace MvcBookShop.Controllers{
+using MvcBookShop.Models;
+using MvcBookShop.PrimaveraWebServices;
+using MvcBookShop.Utility;
 
-    public class CartController : Controller{
-        
-        public IActionResult Index(){
+namespace MvcBookShop.Controllers
+{
 
-            
+    public class CartController : Controller
+    {
+
+        public IActionResult Index()
+        {
+
+            List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
+
+            ViewData["BooksOnCart"] = booksOnCart;
+
+            if (booksOnCart == null || booksOnCart.Count == 0)
+            {
+                ViewData["BooksOnCart"] = new List<Book> { };
+                ViewData["Error"] = "There are no books on cart. Add one!";
+            }
+
             return View();
         }
 
-        /* public IActionResult AddToCart(string id)
+        public IActionResult AddToCart(string id)
         {
             dynamic book = WebServicesManager.Instance.WS04_GetBookInformation(id);
+            
+            List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
 
-            List<Book> booksOnCart = (List<Book>) httpContext.Session.GetObjectFromJson<string>("sessionItem");
+            if (booksOnCart == null)
+                booksOnCart = new List<Book>();
+
 
             foreach (dynamic x in book.DataSet.Table)
             {
-                booksOnCart.Add(new Book()
+                Book bookToAdd = new Book()
                 {
                     ID = id,
                     Title = x.Descricao,
                     Price = x.PVP1,
+                    PriceWoIVA = x.PVP1 * 0.94,
                     Author = x.CDU_Autor,
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,
@@ -45,19 +63,74 @@ namespace MvcBookShop.Controllers{
                     Category = x.Familia,
                     Language = x.CDU_Idioma,
                     Cover = @"./images/books/" + id + ".jpg"
-                });
+                };
+
+                var itemDuplicated = booksOnCart.SingleOrDefault(r => r.ID == id);
+                if(itemDuplicated == null)
+                    booksOnCart.Add(bookToAdd);
             }
 
+            HttpContext.Session.SetObjectAsJson("booksOnCart", booksOnCart);
 
-            return RedirectToAction("Index","HomeController");
-        }*/
+            return RedirectToAction("Index", "Cart");
+        }
+
+        public IActionResult PayForItemsOnCart(){
+
+            List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
+
+            if (booksOnCart == null)
+            {
+                ViewData["BooksOnCart"] = new List<Book> { };
+                ViewData["Error"] = "There was an error retrieving the books of this category";
+                return View();
+            }
+            else if (booksOnCart.Count == 0)
+            {
+                ViewData["Error"] = "There is no books on cart";
+                return View();
+            }
+
+            decimal totalPrice = 0;
+            foreach (Book book in booksOnCart){
+                totalPrice += book.Price;
+            }
+
+            //WS09_PlaceOrder()
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult RemoveItemFromCart(string id)
+        {
+            List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
+
+            if (booksOnCart == null || booksOnCart.Count == 0)
+            {
+                ViewData["BooksOnCart"] = new List<Book> { };
+                ViewData["Error"] = "There are no books on cart. Add one!";
+                return View();
+            }
+
+            var itemToRemove = booksOnCart.SingleOrDefault(r => r.ID == id);
+
+            if (itemToRemove != null)
+                booksOnCart.Remove(itemToRemove);
+
+            HttpContext.Session.SetObjectAsJson("booksOnCart", booksOnCart);
+
+            return RedirectToAction("Index", "Cart");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
-        public IActionResult Error(){
+        public IActionResult Error()
+        {
             return View(
-                new ErrorViewModel { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
                 }
             );
         }
