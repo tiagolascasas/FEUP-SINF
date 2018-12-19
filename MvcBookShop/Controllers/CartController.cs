@@ -53,7 +53,7 @@ namespace MvcBookShop.Controllers
 
             foreach (dynamic x in book.DataSet.Table)
             {
-                decimal PriceWoIVA = decimal.Round(x.PVP1 * 0.94, 2, MidpointRounding.AwayFromZero);
+                string PriceWoIVA = String.Format("{0:0.##}", (float) x.PVP1 * 0.94);
 
                 Book bookToAdd = new Book() {
                     ID = id,
@@ -74,11 +74,12 @@ namespace MvcBookShop.Controllers
                 };
 
                 var itemDuplicated = booksOnCart.SingleOrDefault(r => r.ID == id);
+
                 if(itemDuplicated == null){
                     bookToAdd.QuantityOnCart = 1;
                     booksOnCart.Add(bookToAdd);
                 } else
-                    bookToAdd.QuantityOnCart++;
+                    itemDuplicated.QuantityOnCart += 1;
                     
             }
 
@@ -103,12 +104,19 @@ namespace MvcBookShop.Controllers
                 return View();
             }
 
-            decimal totalPrice = 0;
+            string bodyDocument = "{ \"Linhas\": [";
             foreach (Book book in booksOnCart){
-                totalPrice += book.Price;
+                string bookString = "{ \"Artigo\": \"" + book.ID + "\", \"Quantidade\": \"" + book.QuantityOnCart + "\"},";
+                bodyDocument += bookString;
             }
+            bodyDocument += "], \"Tipodoc\": \"ECL\", \"Serie\": \"A\",\"Entidade\": \"" + HttpContext.Session.GetString("ID_USER") + "\", \"TipoEntidade\": \"C\", \"DataDoc\": \"19/12/2018\", \"DataVenc\": \"19/12/2018\" }";
 
-            //WS09_PlaceOrder()
+            Console.Write(bodyDocument);
+
+            dynamic orders = WebServicesManager.Instance.WS09_PlaceOrder(bodyDocument);
+
+            booksOnCart = new List<Book>();
+            HttpContext.Session.SetObjectAsJson("booksOnCart", booksOnCart);
 
             return RedirectToAction("Index", "Home");
         }

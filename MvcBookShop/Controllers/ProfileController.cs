@@ -13,7 +13,9 @@ namespace MvcBookShop.Controllers{
     public class ProfileController : Controller{
         
         public IActionResult Index(string id){
+            
             ViewData["id"] = id;
+            HttpContext.Session.SetString("ID_USER", id);
 
             try
             {

@@ -23,7 +23,7 @@ namespace MvcBookShop.Controllers
                 int numberOfECL = Int32.Parse(ECLMatch);
 
                 List<Orders> orders = new List<Orders>();
-                for (int i = 1; i <= numberOfECL; i++)
+                for (int i = numberOfECL; i > 0; i--)
                 {
                     dynamic ECL = WebServicesManager.Instance.WS11_GetDocument(i);
 
