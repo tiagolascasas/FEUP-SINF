@@ -45,7 +45,7 @@ namespace MvcBookShop.Controllers
                         estado = "Approved / pending";
                     else if ((string)ECL.Estado == "T")
                         estado = "In transportation / Received";
-                    orders.Add(new Orders() { artigos = artigosList, Total = ((float)total / 100.0).ToString("0.00"), DataCarga = (string)ECL.DataCarga, Estado = estado });
+                    orders.Add(new Orders() { artigos = artigosList, Total = ((float)total / 100.0).ToString("0.00"), DataCarga = (string)ECL.DataCarga, Estado = estado, orderNumber=i.ToString()});
 
                 }
             ViewData["Orders"]=orders;

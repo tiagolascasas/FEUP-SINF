@@ -10,5 +10,6 @@ namespace MvcBookShop.Models
         public string DataCarga { get; set; }
         public string Estado { get; set; }
         public string Total { get; set; }
+        public string orderNumber { get; set; }
     }
 }

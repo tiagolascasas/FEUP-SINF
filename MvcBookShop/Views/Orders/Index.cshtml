@@ -9,7 +9,8 @@
     <h1> Orders </h1>
     <div class="content-container">
          @foreach(var order in orders){
-        <div class="card">
+             var link="/Order?number=" + @order.orderNumber;
+        <a class="card badge-light" href=@link>
             <div class="card-body">
                 <div class="order-item row">
                     <div class="col-md-2">
@@ -53,7 +54,7 @@
                 </div>
                 }
             </div>
-        </div>
+        </a>
         }
         <nav class="page-selector" aria-label="Page navigation example">
                 <ul class="pagination">
