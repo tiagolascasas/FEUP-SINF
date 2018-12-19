@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace MvcBookShop.PrimaveraWebServices
 {
@@ -336,14 +337,16 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS12 returned with " + response.Content + "\n");
+
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
-                dynamic data = JObject.Parse(rawResponse);
-                return data;
+
+                Regex rgx = new Regex("(?<=\"Numerador\":)\\d+");
+                Match value= rgx.Match(rawResponse);
+                
+                return value.Value;
             }
             else
                 return null;
