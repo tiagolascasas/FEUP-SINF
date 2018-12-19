@@ -1,43 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Orders";
+
+    var orders = ViewData["Orders"] as List<Orders>;
+
 }
 
 <div class="container">
     <h1> Orders </h1>
     <div class="content-container">
-        <div class="card">
+         @foreach(var order in orders){
+             var link="/Order?number=" + @order.orderNumber;
+        <a class="card badge-light" href=@link>
             <div class="card-body">
                 <div class="order-item row">
                     <div class="col-md-2">
-                        27/out/2018
+                        @order.DataCarga
                     </div>
                     <div class="col-md-2">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
+                         @{var cover1="/images/books/" + @order.artigos[0][0] + ".jpg";}
+                        <img src=@cover1
                             alt="" class="product-pic">
                     </div>
                     <div class="col-md-3">
-                        Sem segredos! de Marco Costa
+                        @order.artigos[0][1]
                     </div>
                     <div class="col">
-                        28.64€
+                        @order.Total
                     </div>
-                    <div class="howpayed col-md-1">
-                        Paypal
-                    </div>
-                    <div class="font-weight-bold col-md-2">
-                        In order
-                    </div>
+                    <div class="font-weight-bold col-md-3">
+                        @order.Estado                    
+                        </div>
                 </div>
+                @for(var i = 1; i < order.artigos.Count; i++)
+                {
                 <div class="order-item row">
                     <div class="col-md-2">
 
                     </div>
                     <div class="col-md-2">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
+                         @{var cover="/images/books/" + @order.artigos[i][0] + ".jpg";}
+                        <img src=@cover
                             alt="" class="product-pic">
                     </div>
                     <div class="col-md-3">
-                        Sem segredos! de Marco Costa
+                        @order.artigos[i][1]
                     </div>
                     <div class="col-md-2">
                     </div>
@@ -46,58 +52,10 @@
                     <div class="font-weight-bold col-md-2">
                     </div>
                 </div>
+                }
             </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="order-item row">
-                    <div class="col-md-2">
-                        27/out/2018
-                    </div>
-                    <div class="col-md-2">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                    </div>
-                    <div class="col-md-3">
-                        Sem segredos! de Marco Costa
-                    </div>
-                    <div class="col-md-2">
-                        14.32€
-                    </div>
-                    <div class="howpayed col-md-1">
-                        Paypal
-                    </div>
-                    <div class="font-weight-bold col-md-2">
-                        In order
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="order-item row">
-                    <div class="col-md-2">
-                        27/out/2018
-                    </div>
-                    <div class="col-md-2">
-                        <img src="https://img.wook.pt/images/sem-segredos-marco-costa/MXwyMjI4NzQ4NHwxODE4Mzg0OHwxNTM4MDg5MjAwMDAw/502x"
-                            alt="" class="product-pic">
-                    </div>
-                    <div class="col-md-3">
-                        Sem segredos! de Marco Costa
-                    </div>
-                    <div class="col-md-2">
-                        14.32€
-                    </div>
-                    <div class="howpayed col-md-1">
-                        Paypal
-                    </div>
-                    <div class="font-weight-bold col-md-2">
-                        In order
-                    </div>
-                </div>
-            </div>
-        </div>
+        </a>
+        }
         <nav class="page-selector" aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">

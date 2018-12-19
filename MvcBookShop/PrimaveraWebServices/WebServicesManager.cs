@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace MvcBookShop.PrimaveraWebServices
 {
@@ -235,7 +236,7 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("Postman-Token", "e0a43d1a-b683-4224-b212-022e7b33a849");
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual\"", ParameterType.RequestBody);
+            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo order by PVP1\"", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             Console.Write("WS07 returned with " + response.Content + "\n");
@@ -336,14 +337,16 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS12 returned with " + response.Content + "\n");
+
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
-                dynamic data = JObject.Parse(rawResponse);
-                return data;
+
+                Regex rgx = new Regex("(?<=\"Numerador\":)\\d+");
+                Match value= rgx.Match(rawResponse);
+                
+                return value.Value;
             }
             else
                 return null;
