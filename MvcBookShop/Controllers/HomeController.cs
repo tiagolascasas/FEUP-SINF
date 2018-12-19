@@ -23,7 +23,7 @@ namespace MvcBookShop.Controllers{
 
                     foreach (dynamic x in books.DataSet.Table)
                     {
-                        if (bookList.Count < 6)
+                        if (bookList.Count < 12)
                             bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
                     }
                     ViewData["RecentBooks"] = bookList;
@@ -51,7 +51,7 @@ namespace MvcBookShop.Controllers{
                     
                     foreach (dynamic x in books.DataSet.Table)
                     {
-                        if (bookList.Count < 6)
+                        if (bookList.Count < 12)
                             bookList.Add(new Book() { ID = x.Artigo, Title = x.Descricao, Price = x.PVP1, Author = x.CDU_Autor, Cover = @"./images/books/" + x.Artigo + ".jpg" });
                     }
 

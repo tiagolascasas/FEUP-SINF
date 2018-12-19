@@ -236,7 +236,7 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("Postman-Token", "e0a43d1a-b683-4224-b212-022e7b33a849");
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual\"", ParameterType.RequestBody);
+            request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo order by PVP1\"", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             Console.Write("WS07 returned with " + response.Content + "\n");
