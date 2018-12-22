@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
+using Microsoft.AspNetCore.Http;
 
 
 namespace MvcBookShop.Controllers
@@ -13,9 +14,10 @@ namespace MvcBookShop.Controllers
 
     public class OrdersController : Controller
     {
-
+        
         public IActionResult Index(string username)
         {
+            ViewData["username"] = HttpContext.Session.GetString("username");
             Console.WriteLine("\n\n\n\n");
             try
             {

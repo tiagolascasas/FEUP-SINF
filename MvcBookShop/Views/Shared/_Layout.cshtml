@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+var username=ViewData["username"] as String;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -68,53 +72,52 @@
                     </form>
                 </div>
             </div>
-
             <div id="loginRegister" class="col-sm-4">
-                <!--
-    <a data-toggle="modal" data-target="#login">
-        Login
-    </a>
+            @if(username==null){
+                <a href="#" data-toggle="modal" data-target="#login" style="color: #ffffff">
+                    Login
+                </a>
 
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">
-                        Login
-                    </h4>
+                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">
+                                    Login
+                                </h4>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action="@Url.Action("Login", "Auth")">
+                                <div class="modal-body ">
+                                    <p >
+                                        Username
+                                    </p>
+
+                                    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;" required>
+
+                                    <p>  
+                                    Password
+                                    </p>
+
+                                    <input type="text" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Login </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="modal-body ">
-                    <p id="p_login_modal">
-                        Username
-                    </p>
-
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;">
-
-                    <p id="p_login_modal">
-                        Password
-                    </p>
-
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Password" aria-describedby="basic-addon1">
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-
-                    <button type="button" class="btn btn-primary">
-                        Login
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+            }
+<!--
     <p>
         /
     </p>
@@ -167,15 +170,17 @@
                 </div>
             </div>
         </div>
-    </div>
-        -->
-                <a href="/Orders?username=TIAGO" style="color: #ffffff">
+    </div>-->
+            @if(username!=null)
+            {
+                <a href="/Orders?username=@username" style="color: #ffffff">
                     Orders
                 </a>
                 <p> &nbsp;|&nbsp;</p>
-                <a href="/Profile?id=TIAGO" style="color: #ffffff">
+                <a href="/Profile?id=@username" style="color: #ffffff">
                     Profile
                 </a>
+            }
             </div>
         </nav>
 

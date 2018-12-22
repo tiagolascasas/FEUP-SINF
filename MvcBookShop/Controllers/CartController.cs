@@ -21,7 +21,7 @@ namespace MvcBookShop.Controllers
 
         public IActionResult Index()
         {
-
+            ViewData["username"] = HttpContext.Session.GetString("username");
             List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
 
             ViewData["BooksOnCart"] = booksOnCart;

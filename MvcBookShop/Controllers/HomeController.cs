@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
+using Microsoft.AspNetCore.Http;
 
 namespace MvcBookShop.Controllers{
 
@@ -15,6 +16,7 @@ namespace MvcBookShop.Controllers{
         {
             try
             {
+                ViewData["username"] = HttpContext.Session.GetString("username");
                 dynamic books = WebServicesManager.Instance.WS08_GetSetOfBooksOrderedByRelease();
 
                 if (books != null)

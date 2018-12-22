@@ -9,6 +9,7 @@ using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using System.Text.Encodings.Web;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Http;
 
 
 
@@ -21,7 +22,7 @@ namespace MvcBookShop.Controllers
 
         public IActionResult Index(string term)
         {
-
+            ViewData["username"] = HttpContext.Session.GetString("username");
             ViewData["SearchTerm"] = term;
 
             try

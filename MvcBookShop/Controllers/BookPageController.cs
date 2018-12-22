@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using System.Text.Encodings.Web;
@@ -15,7 +16,7 @@ namespace MvcBookShop.Controllers{
     public class BookPageController : Controller{
         
         public IActionResult Index(string id){
-
+            ViewData["username"] = HttpContext.Session.GetString("username");
             dynamic book = WebServicesManager.Instance.WS04_GetBookInformation(id);
 
             var bookList = new List<Book>{};

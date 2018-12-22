@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
+using Microsoft.AspNetCore.Http;
 
 namespace MvcBookShop.Controllers{
 
@@ -14,7 +15,7 @@ namespace MvcBookShop.Controllers{
         
         public IActionResult Index(int number){
             Console.WriteLine("\n\n\n\n");
-
+            ViewData["username"] = HttpContext.Session.GetString("username");
 
             try {
                 dynamic ECL = WebServicesManager.Instance.WS11_GetDocument(number);

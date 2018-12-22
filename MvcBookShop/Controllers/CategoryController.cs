@@ -9,6 +9,7 @@ using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using System.Text.Encodings.Web;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Http;
 
 
 namespace MvcBookShop.Controllers{
@@ -16,7 +17,7 @@ namespace MvcBookShop.Controllers{
     public class CategoryController : Controller{
         
         public IActionResult Index(string category){
-
+            ViewData["username"] = HttpContext.Session.GetString("username");
             ViewData["CategoryTitle"] = category;
 
             try {
