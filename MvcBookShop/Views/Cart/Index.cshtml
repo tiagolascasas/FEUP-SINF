@@ -41,89 +41,95 @@
                             <input type="text" class="form-control" id="inputPhone" value="@ViewData["Telefone"]" readonly>
                         </div>
                     </div>
+                    <div>
+                        <p>To edit this information, please head over to <a href="/Profile?id=@ViewData["username"]">your profile page</a></p>
+                    </div>
                 </form>
             </div>
         </div>
 
         @ViewData["Error"]
 
-        
+
         <div class="card">
-            @if((ViewData["booksOnCart"] as IList<Book>).Count != 0) {
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-4">
-                        Name
-                    </div>
-                    <div class="col-md-2 text-center">
-                        #
-                    </div>
-                    <div class="col-md-2 text-center">
-                        s/IVA
-                    </div>
-                    <div class="col-md-2 text-center">
-                        w/IVA
+            @if ((ViewData["booksOnCart"] as IList<Book>).Count != 0)
+            {
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-4">
+                            Name
+                        </div>
+                        <div class="col-md-2 text-center">
+                            #
+                        </div>
+                        <div class="col-md-2 text-center">
+                            s/IVA
+                        </div>
+                        <div class="col-md-2 text-center">
+                            w/IVA
+                        </div>
                     </div>
                 </div>
-            </div>
             }
-            @foreach(var book in ViewData["booksOnCart"] as IList<Book>){
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2 bookcover">
-                        <img src="@book.Cover"
-                            alt="" class="product-pic">
+            @foreach (var book in ViewData["booksOnCart"] as IList<Book>)
+            {
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2 bookcover">
+                            <img src="@book.Cover"
+                                 alt="" class="product-pic">
+                        </div>
+                        <div class="col-md-4 bookname">
+                            @book.Title
+                        </div>
+                        <div class="col-md-2 text-center qtyselect">
+                            <input class="form-control" type="number" value="@book.QuantityOnCart" id="example-number-input">
+                        </div>
+                        <div class="col-md-2 text-center pricewoiva">
+                            @book.PriceWoIVA €
+                        </div>
+                        <div class="col-md-2 pricewtiva">
+                            @book.Price €
+                        </div>
                     </div>
-                    <div class="col-md-4 bookname">
-                       @book.Title
-                    </div>
-                    <div class="col-md-2 text-center qtyselect">
-                        <input class="form-control" type="number" value="@book.QuantityOnCart" id="example-number-input">
-                    </div>
-                    <div class="col-md-2 text-center pricewoiva">
-                        @book.PriceWoIVA €
-                    </div>
-                    <div class="col-md-2 pricewtiva">
-                        @book.Price €
+                    <div style="margin-top: 2%; margin-left: 95%;">
+                        <a href="@Url.Action("RemoveItemFromCart", "Cart", new { id = @book.ID })" type="button" class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
-                <div style="margin-top: 2%; margin-left: 95%;">
-                    <a href="@Url.Action("RemoveItemFromCart", "Cart", new { id = @book.ID })" type="button" class="btn btn-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
             }
         </div>
-        <div class="card">
-            <div class="card-header" id="paymentMethod">
-                Choose a method to pay:
-            </div>
-            <div class="card-body" id="paymentMethod">
-                <div class="row">
-                    <div class="col-md-3 paymethod">
-                        <img src="~/images/american_express.png"
-                            alt="" class="payMethod-pic">
-                    </div>
-                    <div class="col-md-3 paymethod">
-                        <img src="~/images/paypal.png"
-                            alt="" class="payMethod-pic">
-                    </div>
-                    <div class="col-md-3 paymethod">
-                        <img src="~/images/visa.png"
-                            alt="" class="payMethod-pic">
-                    </div>
-                    <div class="col-md-3 paymethod">
-                        <img src="~/images/mastercard.png"
-                            alt="" class="payMethod-pic">
-                    </div>
+        <!--
+    <div class="card">
+        <div class="card-header" id="paymentMethod">
+            Choose a method to pay:
+        </div>
+        <div class="card-body" id="paymentMethod">
+            <div class="row">
+                <div class="col-md-3 paymethod">
+                    <img src="~/images/american_express.png"
+                        alt="" class="payMethod-pic">
+                </div>
+                <div class="col-md-3 paymethod">
+                    <img src="~/images/paypal.png"
+                        alt="" class="payMethod-pic">
+                </div>
+                <div class="col-md-3 paymethod">
+                    <img src="~/images/visa.png"
+                        alt="" class="payMethod-pic">
+                </div>
+                <div class="col-md-3 paymethod">
+                    <img src="~/images/mastercard.png"
+                        alt="" class="payMethod-pic">
                 </div>
             </div>
         </div>
+    </div>-->
         <div class="col-md-3 float-right">
-        <a href="@Url.Action("PayForItemsOnCart", "Cart")" type="button" class="btn btn-success"><i class="fas fa-chevron-circle-right"></i> &emsp; Go to pay</a>
+            <a href="@Url.Action("PayForItemsOnCart", "Cart")" type="button" class="btn btn-success"><i class="fas fa-chevron-circle-right"></i> &emsp; Go to pay</a>
         </div>
     </div>
 </div>

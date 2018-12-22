@@ -73,7 +73,7 @@ namespace MvcBookShop.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private static string GetHash(HashAlgorithm hashAlgorithm, string input)
+        public static string GetHash(HashAlgorithm hashAlgorithm, string input)
         {
 
             // Convert the input string to a byte array and compute the hash.

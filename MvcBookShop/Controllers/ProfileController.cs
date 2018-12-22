@@ -32,6 +32,17 @@ namespace MvcBookShop.Controllers
                 ViewData["Telefone"] = json.Telefone;
                 ViewData["Email"] = json.CamposUtil[3].Valor;
                 ViewData["Image"] = "./images/clients/" + id + ".jpg";
+
+                string postalCode = Convert.ToString(json.CodigoPostal);
+                string nIF = Convert.ToString(json.NumContribuinte);
+                string phone = Convert.ToString(json.Telefone);
+
+                HttpContext.Session.Remove("Morada");
+                HttpContext.Session.Remove("CodigoPostal");
+                HttpContext.Session.Remove("Telefone");
+                HttpContext.Session.SetString("Morada", (string)json.Morada);
+                HttpContext.Session.SetString("CodigoPostal", postalCode);
+                HttpContext.Session.SetString("Telefone", phone);
             }
             catch (Exception e)
             {
