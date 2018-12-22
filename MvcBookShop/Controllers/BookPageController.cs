@@ -25,11 +25,12 @@ namespace MvcBookShop.Controllers
             var bookList = new List<Book> { };
             foreach (dynamic x in book.DataSet.Table)
             {
+                string PriceCIVA = String.Format("{0:0.##}", (float)x.PVP1 * 1.06);
                 bookList.Add(new Book()
                 {
                     ID = id,
                     Title = x.Descricao,
-                    Price = x.PVP1,
+                    Price = PriceCIVA,
                     Author = x.CDU_Autor,
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,

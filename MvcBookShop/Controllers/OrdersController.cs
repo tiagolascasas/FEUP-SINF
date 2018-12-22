@@ -41,7 +41,7 @@ namespace MvcBookShop.Controllers
                         String[] artigos = new String[2];
                         artigos[0] = (string)x.Artigo;
                         artigos[1] = (string)x.Descricao;
-                        total += ((float)x.PrecUnit * 100);
+                        total += ((float)x.PrecUnit * 106.0);
                         artigosList.Add(artigos);
                     }
 

@@ -7,8 +7,8 @@ namespace MvcBookShop.Models
     {
         public string ID { get; set; }
         public string Title { get; set; }
-        public decimal Price { get; set; }
-        public string PriceWoIVA { get; set; }
+        public string Price { get; set; }
+        public decimal PriceWoIVA { get; set; }
         public string Author { get; set; }
         public string Sinopse { get; set; }
         public string ISBN { get; set; }

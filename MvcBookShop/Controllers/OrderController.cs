@@ -37,10 +37,10 @@ namespace MvcBookShop.Controllers
                     artigos[0] = (string)x.Artigo;
                     artigos[1] = (string)x.Descricao;
                     artigos[2] = (string)x.Quantidade;
-                    dynamic semIVA = x.PrecUnit - x.TotalIva;
-                    artigos[3] = (string)semIVA;
-                    artigos[4] = (string)x.PrecUnit;
-                    total += ((float)x.PrecUnit * 100);
+                    dynamic comIVA = x.PrecUnit + x.TotalIva;
+                    artigos[3] = (string)x.PrecUnit;
+                    artigos[4] = (string)comIVA;
+                    total += ((float)comIVA * 100);
                     artigosList.Add(artigos);
                 }
                 ViewData["Artigos"] = artigosList;

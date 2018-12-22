@@ -53,14 +53,14 @@ namespace MvcBookShop.Controllers
 
             foreach (dynamic x in book.DataSet.Table)
             {
-                string PriceWoIVA = String.Format("{0:0.##}", (float)x.PVP1 * 0.94);
+                string PriceCIVA = String.Format("{0:0.##}", (float)x.PVP1 * 1.06);
 
                 Book bookToAdd = new Book()
                 {
                     ID = id,
                     Title = x.Descricao,
-                    Price = x.PVP1,
-                    PriceWoIVA = PriceWoIVA,
+                    Price = PriceCIVA,
+                    PriceWoIVA = x.PVP1,
                     Author = x.CDU_Autor,
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,
