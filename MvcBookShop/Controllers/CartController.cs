@@ -44,7 +44,7 @@ namespace MvcBookShop.Controllers
         public IActionResult AddToCart(string id)
         {
             dynamic book = WebServicesManager.Instance.WS04_GetBookInformation(id);
-            
+
             List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
 
             if (booksOnCart == null)
@@ -53,9 +53,10 @@ namespace MvcBookShop.Controllers
 
             foreach (dynamic x in book.DataSet.Table)
             {
-                string PriceWoIVA = String.Format("{0:0.##}", (float) x.PVP1 * 0.94);
+                string PriceWoIVA = String.Format("{0:0.##}", (float)x.PVP1 * 0.94);
 
-                Book bookToAdd = new Book() {
+                Book bookToAdd = new Book()
+                {
                     ID = id,
                     Title = x.Descricao,
                     Price = x.PVP1,
@@ -75,12 +76,14 @@ namespace MvcBookShop.Controllers
 
                 var itemDuplicated = booksOnCart.SingleOrDefault(r => r.ID == id);
 
-                if(itemDuplicated == null){
+                if (itemDuplicated == null)
+                {
                     bookToAdd.QuantityOnCart = 1;
                     booksOnCart.Add(bookToAdd);
-                } else
+                }
+                else
                     itemDuplicated.QuantityOnCart += 1;
-                    
+
             }
 
             HttpContext.Session.SetObjectAsJson("booksOnCart", booksOnCart);
@@ -88,7 +91,8 @@ namespace MvcBookShop.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
-        public IActionResult PayForItemsOnCart(){
+        public IActionResult PayForItemsOnCart()
+        {
 
             List<Book> booksOnCart = HttpContext.Session.GetObjectFromJson<List<Book>>("booksOnCart");
 
@@ -101,15 +105,17 @@ namespace MvcBookShop.Controllers
             else if (booksOnCart.Count == 0)
             {
                 ViewData["Error"] = "There is no books on cart";
-                 return BadRequest("There was an error retrieving the books of this category");
-            }else if (HttpContext.Session.GetString("username") == null)
+                return BadRequest("There was an error retrieving the books of this category");
+            }
+            else if (HttpContext.Session.GetString("username") == null)
             {
                 ViewData["Error"] = "You need to Login first";
                 return BadRequest("There was an error retrieving the books of this category");
             }
 
             string bodyDocument = "{ \"Linhas\": [";
-            foreach (Book book in booksOnCart){
+            foreach (Book book in booksOnCart)
+            {
                 string bookString = "{ \"Artigo\": \"" + book.ID + "\", \"Quantidade\": \"" + book.QuantityOnCart + "\"},";
                 bodyDocument += bookString;
             }

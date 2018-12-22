@@ -8,20 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 
-namespace MvcBookShop.Controllers{
+namespace MvcBookShop.Controllers
+{
 
-    public class ProfileController : Controller{
-        
-        public IActionResult Index(string id){
+    public class ProfileController : Controller
+    {
+
+        public IActionResult Index(string id)
+        {
             ViewData["username"] = HttpContext.Session.GetString("username");
             ViewData["id"] = id;
-            if(HttpContext.Session.GetString("username")!=id)
-               return BadRequest("You can only see your profile");
+            if (HttpContext.Session.GetString("username") != id)
+                return BadRequest("You can only see your profile");
 
             try
             {
                 dynamic json = WebServicesManager.Instance.WS02_GetCustomerInformation(id);
-                
+
                 ViewData["Nome"] = json.Nome;
                 ViewData["Morada"] = json.Morada;
                 ViewData["CodigoPostal"] = json.CodigoPostal;
@@ -40,10 +43,12 @@ namespace MvcBookShop.Controllers{
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
-        public IActionResult Error(){
+        public IActionResult Error()
+        {
             return View(
-                new ErrorViewModel { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
                 }
             );
         }

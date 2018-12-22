@@ -8,10 +8,12 @@ using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using Microsoft.AspNetCore.Http;
 
-namespace MvcBookShop.Controllers{
+namespace MvcBookShop.Controllers
+{
 
-    public class HomeController : Controller{
-        
+    public class HomeController : Controller
+    {
+
         public IActionResult Index()
         {
             try
@@ -42,7 +44,7 @@ namespace MvcBookShop.Controllers{
             {
                 Console.WriteLine("{0} Exception caught.", e);
             }
-            
+
             try
             {
                 dynamic books = WebServicesManager.Instance.WS07_GetSetOfBooksOrderedByStock();
@@ -50,7 +52,7 @@ namespace MvcBookShop.Controllers{
                 if (books != null)
                 {
                     var bookList = new List<Book> { };
-                    
+
                     foreach (dynamic x in books.DataSet.Table)
                     {
                         if (bookList.Count < 12)
@@ -77,10 +79,12 @@ namespace MvcBookShop.Controllers{
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
-        public IActionResult Error(){
+        public IActionResult Error()
+        {
             return View(
-                new ErrorViewModel { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
                 }
             );
         }

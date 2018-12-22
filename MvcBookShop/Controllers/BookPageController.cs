@@ -11,21 +11,25 @@ using MvcBookShop.PrimaveraWebServices;
 using System.Text.Encodings.Web;
 using Newtonsoft.Json.Linq;
 
-namespace MvcBookShop.Controllers{
+namespace MvcBookShop.Controllers
+{
 
-    public class BookPageController : Controller{
-        
-        public IActionResult Index(string id){
+    public class BookPageController : Controller
+    {
+
+        public IActionResult Index(string id)
+        {
             ViewData["username"] = HttpContext.Session.GetString("username");
             dynamic book = WebServicesManager.Instance.WS04_GetBookInformation(id);
 
-            var bookList = new List<Book>{};
+            var bookList = new List<Book> { };
             foreach (dynamic x in book.DataSet.Table)
             {
-                bookList.Add(new Book(){ 
-                    ID = id, 
-                    Title = x.Descricao, 
-                    Price = x.PVP1, 
+                bookList.Add(new Book()
+                {
+                    ID = id,
+                    Title = x.Descricao,
+                    Price = x.PVP1,
                     Author = x.CDU_Autor,
                     Sinopse = x.CDU_Sinopse,
                     ISBN = x.CDU_ISBN,
@@ -36,25 +40,28 @@ namespace MvcBookShop.Controllers{
                     Dimensions = x.CDU_Dimensoes,
                     Category = x.Familia,
                     Language = x.CDU_Idioma,
-                    Cover = @"./images/books/" + id + ".jpg"      
-                });  
+                    Cover = @"./images/books/" + id + ".jpg"
+                });
             }
 
-            if(bookList.Count > 0){
+            if (bookList.Count > 0)
+            {
                 ViewData["Title"] = bookList.First().Title;
                 ViewData["Book"] = bookList.First();
                 return View();
             }
 
-                return View();
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
-        public IActionResult Error(){
+        public IActionResult Error()
+        {
             return View(
-                new ErrorViewModel { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
                 }
             );
         }

@@ -14,13 +14,13 @@ namespace MvcBookShop.Controllers
 
     public class OrdersController : Controller
     {
-        
+
         public IActionResult Index(string username)
         {
             ViewData["username"] = HttpContext.Session.GetString("username");
 
-            if(HttpContext.Session.GetString("username")!= username)
-               return BadRequest("You can only see your Orders");
+            if (HttpContext.Session.GetString("username") != username)
+                return BadRequest("You can only see your Orders");
             Console.WriteLine("\n\n\n\n");
             try
             {
@@ -50,10 +50,10 @@ namespace MvcBookShop.Controllers
                         estado = "Approved / pending";
                     else if ((string)ECL.Estado == "T")
                         estado = "In transportation / Received";
-                    orders.Add(new Orders() { artigos = artigosList, Total = ((float)total / 100.0).ToString("0.00"), DataCarga = (string)ECL.DataCarga, Estado = estado, orderNumber=i.ToString()});
+                    orders.Add(new Orders() { artigos = artigosList, Total = ((float)total / 100.0).ToString("0.00"), DataCarga = (string)ECL.DataCarga, Estado = estado, orderNumber = i.ToString() });
 
                 }
-            ViewData["Orders"]=orders;
+                ViewData["Orders"] = orders;
             }
             catch (Exception e)
             {
