@@ -18,6 +18,9 @@ namespace MvcBookShop.Controllers
         public IActionResult Index(string username)
         {
             ViewData["username"] = HttpContext.Session.GetString("username");
+
+            if(HttpContext.Session.GetString("username")!= username)
+               return BadRequest("You can only see your Orders");
             Console.WriteLine("\n\n\n\n");
             try
             {

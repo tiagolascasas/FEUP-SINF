@@ -15,7 +15,8 @@ namespace MvcBookShop.Controllers{
         public IActionResult Index(string id){
             ViewData["username"] = HttpContext.Session.GetString("username");
             ViewData["id"] = id;
-            HttpContext.Session.SetString("ID_USER", id);
+            if(HttpContext.Session.GetString("username")!=id)
+               return BadRequest("You can only see your profile");
 
             try
             {

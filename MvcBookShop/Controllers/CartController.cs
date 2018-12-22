@@ -96,12 +96,16 @@ namespace MvcBookShop.Controllers
             {
                 ViewData["BooksOnCart"] = new List<Book> { };
                 ViewData["Error"] = "There was an error retrieving the books of this category";
-                return View();
+                return BadRequest("There was an error retrieving the books of this category");
             }
             else if (booksOnCart.Count == 0)
             {
                 ViewData["Error"] = "There is no books on cart";
-                return View();
+                 return BadRequest("There was an error retrieving the books of this category");
+            }else if (HttpContext.Session.GetString("username") == null)
+            {
+                ViewData["Error"] = "You need to Login first";
+                return BadRequest("There was an error retrieving the books of this category");
             }
 
             string bodyDocument = "{ \"Linhas\": [";
@@ -109,7 +113,7 @@ namespace MvcBookShop.Controllers
                 string bookString = "{ \"Artigo\": \"" + book.ID + "\", \"Quantidade\": \"" + book.QuantityOnCart + "\"},";
                 bodyDocument += bookString;
             }
-            bodyDocument += "], \"Tipodoc\": \"ECL\", \"Serie\": \"A\",\"Entidade\": \"" + HttpContext.Session.GetString("ID_USER") + "\", \"TipoEntidade\": \"C\", \"DataDoc\": \"19/12/2018\", \"DataVenc\": \"19/12/2018\" }";
+            bodyDocument += "], \"Tipodoc\": \"ECL\", \"Serie\": \"A\",\"Entidade\": \"" + HttpContext.Session.GetString("username") + "\", \"TipoEntidade\": \"C\", \"DataDoc\": \"19/12/2018\", \"DataVenc\": \"19/12/2018\" }";
 
             Console.Write(bodyDocument);
 
@@ -129,7 +133,8 @@ namespace MvcBookShop.Controllers
             {
                 ViewData["BooksOnCart"] = new List<Book> { };
                 ViewData["Error"] = "There are no books on cart. Add one!";
-                return View();
+                return BadRequest("There are no books on cart. Add one!");
+
             }
 
             var itemToRemove = booksOnCart.SingleOrDefault(r => r.ID == id);

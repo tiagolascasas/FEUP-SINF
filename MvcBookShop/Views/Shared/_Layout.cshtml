@@ -180,6 +180,8 @@ var username=ViewData["username"] as String;
                 <a href="/Profile?id=@username" style="color: #ffffff">
                     Profile
                 </a>
+                <p> &nbsp;|&nbsp;</p>
+                 @Html.ActionLink("Logout", "Logout", "Auth", new { }, htmlAttributes: new { @style="color: #ffffff" })
             }
             </div>
         </nav>

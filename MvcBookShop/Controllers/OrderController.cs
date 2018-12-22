@@ -17,10 +17,15 @@ namespace MvcBookShop.Controllers{
             Console.WriteLine("\n\n\n\n");
             ViewData["username"] = HttpContext.Session.GetString("username");
 
+            if(HttpContext.Session.GetString("username")==null)
+               return BadRequest("You need to be logged in order see your Orders");
+
             try {
                 dynamic ECL = WebServicesManager.Instance.WS11_GetDocument(number);
                 dynamic total=0;
 
+                if(HttpContext.Session.GetString("username")!=(string)ECL.Entidade)
+                    return BadRequest("You're not the owner of this order");
                 List<string[]> artigosList = new List<string[]>{};
                 foreach (dynamic x in ECL.Linhas)
                 {
