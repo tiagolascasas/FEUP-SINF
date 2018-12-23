@@ -227,54 +227,41 @@ where Descricao like '%Intro%' and Artigo.Artigo = ArtigoMoeda.Artigo"
 
 <table width="100%">
   <tr><td>Web Service</td><td>WS07</td></tr>
-  <tr><td>Description</td><td>Gets a list of books ordered by existing stock, except books with no stock</td></tr>
+  <tr><td>Description</td><td>Gets a list of books ordered by smallest price</td></tr>
   <tr><td>Related Core Views</td><td>V_001</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
   <tr><td>Input example</td><td>
 <pre>
-Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual
+Select Artigo.Artigo, Descricao, PVP1, CDU_Autor
 from Artigo, ArtigoMoeda
-where Artigo.Artigo = ArtigoMoeda.Artigo and STKActual > 0 order by STKActual
+where Artigo.Artigo = ArtigoMoeda.Artigo order by PVP1
 </pre></td></tr>
   <tr><td>Expected Output</td><td><pre>
 {
     "DataSet": {
         "Table": [
             {
-                "Artigo": "B0003",
-                "Descricao": "Introdução à Programação em Java",
-                "PVP1": 20,
-                "CDU_Autor": "António Manuel Adrego da Rocha",
-                "STKActual": 1
-            },
-            {
-                "Artigo": "B0005",
-                "Descricao": "Foi Sem Querer Que Te Quis",
-                "PVP1": 12,
-                "CDU_Autor": "Raul Minh'alma ",
-                "STKActual": 6
-            },
-            {
-                "Artigo": "B0004",
-                "Descricao": "Introdução à programação em C",
-                "PVP1": 25,
-                "CDU_Autor": "António Manuel Adrego da Rocha",
-                "STKActual": 15
-            },
-            {
-                "Artigo": "B0002",
-                "Descricao": "Romeu e Julieta",
-                "PVP1": 25,
-                "CDU_Autor": "William Shakespeare ",
-                "STKActual": 22
-            },
-            {
-                "Artigo": "B0001",
-                "Descricao": "A Brief History Of Time",
-                "PVP1": 25.99,
-                "CDU_Autor": "Stephen Hawking",
-                "STKActual": 30
-            }
+               "Artigo": "B0026",
+               "Descricao": "Keep Quiet",
+               "PVP1": 6.01,
+               "CDU_Autor": "Lisa Scottoline",
+               "STKActual": 0
+           },
+           {
+               "Artigo": "B0024",
+               "Descricao": "Murder on the Orient Express",
+               "PVP1": 6.06,
+               "CDU_Autor": "Agatha Christie",
+               "STKActual": 0
+           },
+           {
+               "Artigo": "B0022",
+               "Descricao": "Heroes Are My Weakness",
+               "PVP1": 7.31,
+               "CDU_Autor": "Susan Elizabeth Phillips",
+               "STKActual": 0
+           },
+           (...)
         ]
     },
     "Query": "System.Data.SqlClient.SqlCommand"
@@ -331,7 +318,8 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
                 "PVP1": 25.99,
                 "CDU_Autor": "Stephen Hawking",
                 "DataUltimaActualizacao": "2018-12-02T01:46:43"
-            }
+            },
+            (...)
         ]
     },
     "Query": "System.Data.SqlClient.SqlCommand"
@@ -341,38 +329,9 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 
 <table width="100%">
   <tr><td>Web Service</td><td>WS09</td></tr>
-  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an invoice</td></tr>
+  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an ECL document on the ERP</td></tr>
   <tr><td>Related Core Views</td><td>V_007</td></tr>
   <tr><td>Route</td><td>Administrador/Consulta</td></tr>
-  <tr><td>Input example</td><td>
-<pre>
-{
-  "Linhas": [
-    {
-      "Artigo": "B0001",
-      "Quantidade": "1"
-    },
-    {
-      "Artigo": "B0002",
-      "Quantidade": "1"
-    }
-  ],
-  "Tipodoc": "FAR",
-  "Serie": "A",
-  "Entidade": "C0001",
-  "TipoEntidade": "C",
-  "DataDoc":"12/11/2018",
-  "DataVenc":"12/12/2018"
-}
-</pre></td></tr>
-  <tr><td>Expected Output</td><td>true</td></tr>
-</table>
-
-<table width="100%">
-  <tr><td>Web Service</td><td>WS10</td></tr>
-  <tr><td>Description</td><td>Makes a purchase of the specified items, producing an ECL document</td></tr>
-  <tr><td>Related Core Views</td><td>V_007</td></tr>
-  <tr><td>Route</td><td>Vendas/Docs/CreateDocument</td></tr>
   <tr><td>Input example</td><td>
 <pre>
 {
@@ -397,14 +356,14 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
   <tr><td>Expected Output</td><td>true</td></tr>
 </table>
 
+(WS10 has become deprecated in the final version of the project, as it turned out to not be needed)
+
 <table width="100%">
   <tr><td>Web Service</td><td>WS11</td></tr>
-  <tr><td>Description</td><td>Gets the specified document</td></tr>
+  <tr><td>Description</td><td>Gets the specified ECL document</td></tr>
   <tr><td>Related Core Views</td><td>V_005, V_006</td></tr>
-  <tr><td>Route</td><td>Vendas/Docs/Edita/000/{type}/{entity_type}/{id}</td></tr>
+  <tr><td>Route</td><td>Vendas/Docs/Edita/000/ECL/A/{id}</td></tr>
   <tr><td>Input example</td><td>
-  type = FAR
-  entity_type = A
   id = 1
   (parâmetros da rota)
 </td></tr>
@@ -493,4 +452,32 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 }
 </pre>
   </td></tr>
+</table>
+
+<table width="100%">
+  <tr><td>Web Service</td><td>WS12</td></tr>
+  <tr><td>Description</td><td>Gets information about the ECL documents</td></tr>
+  <tr><td>Related Core Views</td><td>V_005, V_006</td></tr>
+  <tr><td>Route</td><td>Base/Series/ListaSeries/V/ECL/false</td></tr>
+  <tr><td>Input example</td><td>
+<pre>
+[
+    {
+        "CodigoTabLog": "Series",
+        "ChaveLog": "Documento,Serie",
+        "EstadoBE": "",
+        "Documento": "ECL",
+        "Serie": "A",
+        "Ordem": 1,
+        "Descricao": "Série A",
+        "SerieInactiva": false,
+        (...)
+        "Interna": false,
+        "eGarAbreDocumento": false,
+        "eGAR_Comunica": false,
+        "AbvtApl": "BAS"
+    }
+]
+</pre></td></tr>
+  <tr><td>Expected Output</td><td>HTTP 200</td></tr>
 </table>
