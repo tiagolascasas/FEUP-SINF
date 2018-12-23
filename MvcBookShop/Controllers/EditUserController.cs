@@ -147,11 +147,9 @@ namespace MvcBookShop.Controllers
                         }
                         break;
                     case "CondPag":
-                        Console.Write("\n\n\n\nin cond pag\n\n\n\n");
                         info.CondPag = entry.Value;
                         break;
                     case "ModoPag":
-                        Console.Write("\n\n\n\nin mode pag\n\n\n\n");
                         info.ModoPag = entry.Value;
                         break;
                     default:

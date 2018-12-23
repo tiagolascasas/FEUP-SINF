@@ -71,7 +71,7 @@ namespace MvcBookShop.PrimaveraWebServices
             {
                 string rawResponse = response.Content;
                 dynamic data = JObject.Parse(rawResponse);
-                Console.WriteLine("Second token: " + data.access_token);
+                Console.WriteLine("First token: " + data.access_token);
                 return data.access_token;
             }
             else
@@ -93,7 +93,7 @@ namespace MvcBookShop.PrimaveraWebServices
             {
                 string rawResponse = response.Content;
                 dynamic data = JObject.Parse(rawResponse);
-                Console.WriteLine("First token: " + data.access_token);
+                Console.WriteLine("Second token: " + data.access_token);
                 return data.access_token;
             }
             else
@@ -111,7 +111,6 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", json, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS01 status code: " + response.StatusCode);
             return response.StatusCode == HttpStatusCode.NoContent;
         }
 
@@ -124,12 +123,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS02 returned ");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse + "\n");
                 return data;
             }
@@ -148,7 +144,6 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", json, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS03 status code: " + response.StatusCode);
             return response.StatusCode == HttpStatusCode.NoContent;
         }
 
@@ -165,12 +160,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", sql, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS04 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -190,12 +182,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", sql, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS05 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -215,12 +204,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", sql, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS06 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -239,12 +225,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, STKActual from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo order by PVP1\"", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS07 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -263,12 +246,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", "\"Select Artigo.Artigo, Descricao, PVP1, CDU_Autor, DataUltimaActualizacao from Artigo, ArtigoMoeda where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc\"", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS08 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -287,7 +267,6 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", Document, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS09 status code: " + response.StatusCode + "\n");
             return response.StatusCode == HttpStatusCode.OK;
         }
 
@@ -302,7 +281,6 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddParameter("undefined", Document, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS10 status code: " + response.StatusCode + "\n");
             return response.StatusCode == HttpStatusCode.OK;
         }
 
@@ -315,12 +293,9 @@ namespace MvcBookShop.PrimaveraWebServices
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
 
-            Console.Write("WS11 returned with " + response.Content + "\n");
-
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string rawResponse = response.Content;
-                Console.Write(rawResponse);
                 dynamic data = JObject.Parse(rawResponse);
                 return data;
             }
@@ -336,8 +311,6 @@ namespace MvcBookShop.PrimaveraWebServices
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", WebServicesManager.Instance.SecondToken));
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
-
-
 
             if (response.StatusCode == HttpStatusCode.OK)
             {

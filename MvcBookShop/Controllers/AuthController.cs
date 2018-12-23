@@ -29,7 +29,6 @@ namespace MvcBookShop.Controllers
 
 
                 SHA256 sha256Hash = SHA256.Create();
-                Console.WriteLine("\n\n\n\n\n\n\n");
 
                 if (VerifyHash(sha256Hash, Request.Form["password"], (string)json.CamposUtil[4].Valor))
                 {
@@ -48,7 +47,6 @@ namespace MvcBookShop.Controllers
                 }
                 else
                     return BadRequest("Incorrect Password");
-                Console.WriteLine("\n\n\n\n\n\n\n");
             }
             catch (Exception e)
             {

@@ -17,7 +17,6 @@ namespace MvcBookShop.Controllers
 
         public IActionResult Index(int number)
         {
-            Console.WriteLine("\n\n\n\n");
             ViewData["username"] = HttpContext.Session.GetString("username");
 
             if (HttpContext.Session.GetString("username") == null)
@@ -59,15 +58,11 @@ namespace MvcBookShop.Controllers
 
 
                 ViewData["ID"] = number;
-                //Console.WriteLine(ECL);
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
             }
-
-            Console.WriteLine(number);
-            Console.WriteLine("\n\n\n\n");
             return View();
         }
 

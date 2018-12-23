@@ -21,7 +21,6 @@ namespace MvcBookShop.Controllers
 
             if (HttpContext.Session.GetString("username") != username)
                 return BadRequest("You can only see your Orders");
-            Console.WriteLine("\n\n\n\n");
             try
             {
                 dynamic ECLMatch = WebServicesManager.Instance.WS12_ListSeries();
@@ -59,7 +58,6 @@ namespace MvcBookShop.Controllers
             {
                 Console.WriteLine("{0} Exception caught.", e);
             }
-            Console.WriteLine("\n\n\n\n");
             return View();
         }
 
