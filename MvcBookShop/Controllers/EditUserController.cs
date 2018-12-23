@@ -48,12 +48,20 @@ namespace MvcBookShop.Controllers
                 HttpContext.Session.SetString("NIF", Request.Form["nif"]);
                 HttpContext.Session.SetString("Telefone", Request.Form["phone"]);
 
-                EditEmail(Request.Form["email"]);
-                EditPassword(Request.Form["password"]);
+                var editParams = new Dictionary<string, string>
+                {
+                    {"CDU_email", Request.Form["email"] },
+                    {"CDU_password_hash", AuthController.GetHash(SHA256.Create(), Request.Form["password"]) },
+                    {"CondPag", "1" },
+                    {"ModoPag", "MB" }
+                };
+
+                EditFields(editParams);
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
+                HttpContext.Session.Clear();
                 return BadRequest("Error creating user");
             }
 
@@ -62,77 +70,93 @@ namespace MvcBookShop.Controllers
 
         public IActionResult EditMorada(string morada)
         {
-            EditField("Fac_Mor", morada);
+            EditFieldSingle("Fac_Mor", morada);
             return Redirect("/Profile?id=" + HttpContext.Session.GetString("username"));
         }
 
         public IActionResult EditPostalCode(string code)
         {
-            EditField("Fac_Cp", code);
+            EditFieldSingle("Fac_Cp", code);
             return Redirect("/Profile?id=" + HttpContext.Session.GetString("username"));
         }
 
         public IActionResult EditPhone(string phone)
         {
-            EditField("Fac_Tel", phone);
+            EditFieldSingle("Fac_Tel", phone);
             return Redirect("/Profile?id=" + HttpContext.Session.GetString("username"));
         }
 
         public IActionResult EditEmail(string email)
         {
-            EditField("CDU_email", email);
+            EditFieldSingle("CDU_email", email);
             return Redirect("/Profile?id=" + HttpContext.Session.GetString("username"));
         }
 
         public IActionResult EditPassword(string password)
         {
             string hash = AuthController.GetHash(SHA256.Create(), password);
-            EditField("CDU_password_hash", hash);
+            EditFieldSingle("CDU_password_hash", hash);
             return Redirect("/Profile?id=" + HttpContext.Session.GetString("username"));
         }
 
-        public bool EditField(string field, string value)
+        public bool EditFieldSingle(string key, string val)
         {
-            Console.Write("\n\n\n\n\n" + field + " -> " + value + "\n\n\n\n\n");
+            var d = new Dictionary<string, string>
+            {
+                { key, val }
+            };
+            return EditFields(d);
+        }
 
+        public bool EditFields(Dictionary<string, string> fields)
+        {
             string user = HttpContext.Session.GetString("username");
             dynamic info = WebServicesManager.Instance.WS02_GetCustomerInformation(user);
-            
-            switch (field)
+
+            foreach (KeyValuePair<string, string> entry in fields)
             {
-                case "Fac_Mor":
-                    info.Morada = value;
-                    break;
-                case "Fac_Cp":
-                    info.CodigoPostal = value;
-                    break;
-                case "Fac_Tel":
-                    info.Telefone = value;
-                    Console.Write("\n\n\n\n\n" + "here" + "\n\n\n\n\n");
-                    break;
-                case "CDU_email":
-                    foreach (var f in info.CamposUtil)
-                    {
-                        if (f.Nome == "CDU_email")
+                switch (entry.Key)
+                {
+                    case "Fac_Mor":
+                        info.Morada = entry.Value;
+                        break;
+                    case "Fac_Cp":
+                        info.CodigoPostal = entry.Value;
+                        break;
+                    case "Fac_Tel":
+                        info.Telefone = entry.Value;
+                        break;
+                    case "CDU_email":
+                        foreach (var f in info.CamposUtil)
                         {
-                            f.Conteudo = "ValorValor" + value;
-                            f.Valor = value;
+                            if (f.Nome == "CDU_email")
+                            {
+                                f.Conteudo = "ValorValor" + entry.Value;
+                                f.Valor = entry.Value;
+                            }
                         }
-                    }
-                    break;
-                case "CDU_password_hash":
-                    foreach (var f in info.CamposUtil)
-                    {
-                        if (f.Nome == "CDU_password_hash")
+                        break;
+                    case "CDU_password_hash":
+                        foreach (var f in info.CamposUtil)
                         {
-                            Console.Write("\n\n\\nIn password\n\n\n");
-                            f.Conteudo = "ValorValor" + value;
-                            f.Valor = value;
+                            if (f.Nome == "CDU_password_hash")
+                            {
+                                f.Conteudo = "ValorValor" + entry.Value;
+                                f.Valor = entry.Value;
+                            }
                         }
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    case "CondPag":
+                        Console.Write("\n\n\n\nin cond pag\n\n\n\n");
+                        info.CondPag = entry.Value;
+                        break;
+                    case "ModoPag":
+                        Console.Write("\n\n\n\nin mode pag\n\n\n\n");
+                        info.ModoPag = entry.Value;
+                        break;
+                    default:
+                        break;
+                }
             }
 
             return WebServicesManager.Instance.WS03_UpdateCustomerAttributes(JsonConvert.SerializeObject(info));

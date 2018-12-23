@@ -26,7 +26,7 @@ namespace MvcBookShop.Controllers
             foreach (dynamic x in book.DataSet.Table)
             {
                 string PriceCIVA = String.Format("{0:0.##}", (float)x.PVP1 * 1.06);
-                bookList.Add(new Book()
+                Book b = new Book()
                 {
                     ID = id,
                     Title = x.Descricao,
@@ -42,7 +42,8 @@ namespace MvcBookShop.Controllers
                     Category = x.Familia,
                     Language = x.CDU_Idioma,
                     Cover = @"./images/books/" + id + ".jpg"
-                });
+                };
+                bookList.Add(b);
             }
 
             if (bookList.Count > 0)
