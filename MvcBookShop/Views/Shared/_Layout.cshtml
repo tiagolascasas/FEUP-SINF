@@ -58,7 +58,7 @@ var username=ViewData["username"] as String;
                 </a>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 <div class="input-group mb-3">
                     <form action="/Search" method="get">
                         <input name="term" type="text" class="form-control" placeholder="Search ..."
@@ -73,116 +73,137 @@ var username=ViewData["username"] as String;
                 </div>
             </div>
             <div id="loginRegister" class="col-sm-4">
-            @if(username==null){
-                <a href="#" data-toggle="modal" data-target="#login" style="color: #ffffff">
-                    Login
-                </a>
+                @if (username == null)
+                {
+                    <a href="#" data-toggle="modal" data-target="#login" style="color: #ffffff">
+                        Login
+                    </a>
 
-                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">
-                                    Login
-                                </h4>
+                    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">
+                                        Login
+                                    </h4>
 
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" action="@Url.Action("Login", "Auth")">
-                                <div class="modal-body ">
-                                    <p >
-                                        Username
-                                    </p>
-
-                                    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;" required>
-
-                                    <p>  
-                                    Password
-                                    </p>
-
-                                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        Close
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
-                                <button type="submit" class="btn btn-primary">
-                                    Login </button>
                                 </div>
-                            </form>
+                                <form method="post" action="@Url.Action("Login", "Auth")">
+                                    <div class="modal-body ">
+                                        <p>
+                                            Username
+                                        </p>
+
+                                        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;" required>
+
+                                        <p>
+                                            Password
+                                        </p>
+
+                                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Login
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-<!--
-    <p>
-        /
-    </p>
-
-    <a data-toggle="modal" data-target="#register">
-        Register
-    </a>
-
-    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">
+                    <p> &nbsp;|&nbsp;</p>
+                    <!--REGISTER MODAL-->
+                    <a href="#" data-toggle="modal" data-target="#register" style="color: #ffffff">
                         Register
-                    </h4>
+                    </a>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">
+                                        Register
+                                    </h4>
 
-                <div class="modal-body ">
-                    <p id="p_login_modal">
-                        Name
-                    </p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" action="@Url.Action("Register", "EditUser")">
+                                    <div class="modal-body ">
+                                        <p>
+                                            Username
+                                        </p>
+                                        <input type="text" pattern=".{5,}" name="username" class="form-control" placeholder="Your username (5 characters min.)" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;" required>
 
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;">
+                                        <p>
+                                            Password
+                                        </p>
+                                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
 
-                    <p id="p_login_modal">
-                        Username
-                    </p>
+                                        <p>
+                                            Email
+                                        </p>
+                                        <input type="email" name="email" class="form-control" placeholder="example@email.com" aria-label="Email" aria-describedby="basic-addon1" required>
 
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" style="margin-bottom: 10px;">
+                                        <p>
+                                            NIF
+                                        </p>
+                                        <input type="text" name="nif" class="form-control" placeholder="Your NIF" aria-label="nif" aria-describedby="basic-addon1" required>
 
-                    <p id="p_login_modal">
-                        Password
-                    </p>
+                                        <p>
+                                            Full name
+                                        </p>
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name" aria-label="Name" aria-describedby="basic-addon1" required>
 
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Password" aria-describedby="basic-addon1">
-                </div>
+                                        <p>
+                                            Address
+                                        </p>
+                                        <input type="text" name="address" class="form-control" placeholder="Your shipping address" aria-label="Address" aria-describedby="basic-addon1" required>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
+                                        <p>
+                                            Postal Code
+                                        </p>
+                                        <input type="text" name="code" class="form-control" placeholder="The address's postal code" aria-label="code" aria-describedby="basic-addon1" required>
 
-                    <button type="button" class="btn btn-primary">
-                        Register
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>-->
-            @if(username!=null)
-            {
-                <a href="/Orders?username=@username" style="color: #ffffff">
-                    Orders
-                </a>
-                <p> &nbsp;|&nbsp;</p>
-                <a href="/Profile?id=@username" style="color: #ffffff">
-                    Profile
-                </a>
-                <p> &nbsp;|&nbsp;</p>
-                 @Html.ActionLink("Logout", "Logout", "Auth", new { }, htmlAttributes: new { @style="color: #ffffff" })
-            }
+                                        <p>
+                                            Phone number
+                                        </p>
+                                        <input type="text" name="phone" class="form-control" placeholder="Your phone number" aria-label="phone" aria-describedby="basic-addon1" required>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Register
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (username != null)
+                {
+                    <a href="/Orders?username=@username" style="color: #ffffff">
+                        Orders
+                    </a>
+                    <p> &nbsp;|&nbsp;</p>
+                    <a href="/Profile?id=@username" style="color: #ffffff">
+                        Profile
+                    </a>
+                    <p> &nbsp;|&nbsp;</p>
+                    @Html.ActionLink("Logout", "Logout", "Auth", new { }, htmlAttributes: new { @style = "color: #ffffff" })
+                }
             </div>
         </nav>
 

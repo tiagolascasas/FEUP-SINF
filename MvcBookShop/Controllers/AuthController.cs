@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using MvcBookShop.Utility;
+using Newtonsoft.Json;
 
 namespace MvcBookShop.Controllers
 {

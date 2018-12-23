@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MvcBookShop.Models;
 using MvcBookShop.PrimaveraWebServices;
 using Newtonsoft.Json;
 
@@ -16,6 +17,47 @@ namespace MvcBookShop.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Register()
+        {
+            try
+            {
+                User user = new User
+                {
+                    Cliente = Request.Form["username"],
+                    Nome = Request.Form["name"],
+                    Morada = Request.Form["address"],
+                    NumContribuinte = Request.Form["nif"],
+                    CodigoPostal = Request.Form["code"],
+                    Telefone = Request.Form["phone"]
+                };
+
+                string data = JsonConvert.SerializeObject(user);
+
+                Console.Write("\n\n\n\n" + data + "\n\n\n\n");
+
+                bool success = WebServicesManager.Instance.WS01_CreateCustomer(data);
+                if (!success)
+                    return BadRequest("Problem creating user");
+
+                HttpContext.Session.SetString("username", Request.Form["username"]);
+                HttpContext.Session.SetString("Nome", Request.Form["name"]);
+                HttpContext.Session.SetString("Morada", Request.Form["address"]);
+                HttpContext.Session.SetString("CodigoPostal", Request.Form["code"]);
+                HttpContext.Session.SetString("NIF", Request.Form["nif"]);
+                HttpContext.Session.SetString("Telefone", Request.Form["phone"]);
+
+                EditEmail(Request.Form["email"]);
+                EditPassword(Request.Form["password"]);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+                return BadRequest("Error creating user");
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult EditMorada(string morada)
