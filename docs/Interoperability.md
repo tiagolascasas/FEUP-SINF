@@ -457,7 +457,7 @@ where Artigo.Artigo = ArtigoMoeda.Artigo order by DataUltimaActualizacao desc
 <table width="100%">
   <tr><td>Web Service</td><td>WS12</td></tr>
   <tr><td>Description</td><td>Gets information about the ECL documents</td></tr>
-  <tr><td>Related Core Views</td><td>V_005, V_006</td></tr>
+  <tr><td>Related Core Views</td><td>V_005</td></tr>
   <tr><td>Route</td><td>Base/Series/ListaSeries/V/ECL/false</td></tr>
   <tr><td>Input example</td><td>
 <pre>
